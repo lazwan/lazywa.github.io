@@ -8,11 +8,13 @@ menu: 关于
 permalink: /about/
 ---
 
-我是马壮，码而生，码而立。
+##  简介：
 
-仰慕「优雅编码的艺术」。
+姓名： ***  
+性别： 男  
+生日： 1998.11.21  
+职业： 学生（某不知名大学大二学生）  
 
-坚信熟能生巧，努力改变人生。
 
 ## 联系
 
@@ -20,7 +22,7 @@ permalink: /about/
 * {{ website.sitename }}：[@{{ website.name }}]({{ website.url }})
 {% endfor %}
 
-## Skill Keywords
+## Keywords
 
 {% for category in site.data.skills %}
 ### {{ category.name }}

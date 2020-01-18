@@ -1,19 +1,16 @@
-- name: Software Engineer Keywords
+- name: 语言（啥都不会还在学习的咸鱼）
   keywords:
-      - Java
+      - C
       - C++
       - Python
-      - Design Patterns
+      - Java
 
-- name: Mobile Developer Keywords
+- name: 游戏
   keywords:
-      - Android
-      - Reverse Engineering
+      - 给他爱我(GTA5)
+      - QQ 飞车
 
-- name: Windows Developer Keywords
-  keywords:
-      - Win32 SDK
-      - DuiLib
-      - WTL
-      - COM
-      - WinDbg
+- name： 爱好
+      - 魔方(会玩各种魔方， 三阶官方Sub16.76s, WCAID:2018WANZ21)
+      - 睡觉
+      - （没啥爱好。。。）
