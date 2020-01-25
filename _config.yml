@@ -96,7 +96,7 @@ disqus:
     username: 
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: ZhWing
+    owner: mzlogin
     repo: blog-comments
     oauth:
         client_id: 813efb094d6875f09f12
@@ -104,9 +104,9 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: ZhWing
-    repo: blog-comments
-    clientID: d2e1cbbd298958076462
-    clientSecret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
+    repo: zhwing.github.io
+    clientID: 813efb094d6875f09f12
+    clientSecret: 856d1d32738d01aa04518ac810e772538fd16dcc
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
