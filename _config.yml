@@ -96,8 +96,8 @@ disqus:
     username: 
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: mzlogin
-    repo: blog-comments
+    owner: ZhWing
+    repo: zhwing.github.io
     oauth:
         client_id: 813efb094d6875f09f12
         client_secret: 856d1d32738d01aa04518ac810e772538fd16dcc
