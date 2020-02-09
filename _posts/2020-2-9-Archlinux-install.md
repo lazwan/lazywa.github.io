@@ -89,7 +89,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-##　2、Archlinux 配置部分
+## 2、Archlinux 配置部分
 
 ### 2.1、修改时区、同步时间
 
