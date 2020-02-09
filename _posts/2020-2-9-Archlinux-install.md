@@ -215,9 +215,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ![shell](/images/blog/Archlinux-install/shell.png)
 
 ![desktop](/images/blog/Archlinux-install/Archlinux-desktop.png)
-
 ![theme](/images/blog/Archlinux-install/theme.png)
 
 ![windows](/images/blog/Archlinux-install/windows.png)
-
 ![icons](/images/blog/Archlinux-install/icons.png)
