@@ -212,9 +212,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 我的 Archlinux 桌面配置：
 
-![desktop](/images/blog/Archlinux-install/Archlinux-desktop.png)
-
 ![shell](/images/blog/Archlinux-install/shell.png)
+
+![desktop](/images/blog/Archlinux-install/Archlinux-desktop.png)
 
 ![theme](/images/blog/Archlinux-install/theme.png)
 
