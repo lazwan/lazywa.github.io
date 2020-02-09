@@ -22,11 +22,15 @@ ls /sys/firmware/efi/efivars
 setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
 ```
 
-### 1.3、配置一下软件源，将 China 源放在前面，同步软件源
+### 1.3、联网、配置一下软件源，将 China 源放在前面，同步软件源
 
 ```shell
-vim /etc/pacman.d/mirrorlist
+# 联网
+wifi-menu
+dhcpcd
 
+#  配置软件源
+vim /etc/pacman.d/mirrorlist
 pacman -Syy
 ```
 
