@@ -1,3 +1,11 @@
+---
+layout: wiki
+title: Archlinux
+categories: Linux
+description: 我的 Linux 配置方法
+keywords: Linux config
+---
+
 重装系统后需要做的事情！！！
 
 一些配置文件放在 https://github.com/ZhWing/zhwing.github.io/tree/master/_wiki/config
