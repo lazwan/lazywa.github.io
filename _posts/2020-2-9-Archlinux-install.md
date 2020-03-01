@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 『我的 Archlinux 安装』
+title: 『Archlinux 安装手册』
 categories: Blog
 description: 安装 Archlinux
 keywords: Linux, Note
