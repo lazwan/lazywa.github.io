@@ -8,23 +8,23 @@ keywords: Linux config
 
 重装系统后需要做的事情！！！
 
-一些配置文件放在 https://github.com/ZhWing/zhwing.github.io/tree/master/_wiki/config
+一些配置文件放在 [https://github.com/ZhWing/zhwing.github.io/tree/master/_wiki/config](https://github.com/ZhWing/zhwing.github.io/tree/master/_wiki/config)
 
 ## 安装常用软件
 
-- **Chrome**: sudo pacman -S google-chrome
+- **Chrome**: `sudo pacman -S google-chrome`
 
-- **VSCode**: sudo pacman -S visual-studio-code-bin
-- **IntelliJ IDEA**: sudo pacman -S intellij-idea-community-edition
-- **PyCharm**: sudo pacman -S pycharm-community-edition
-- **Typora**: sudo pacman -S typora
-- **网易云音乐**: sudo pacman -S netease-cloud-music
+- **VSCode**: `sudo pacman -S visual-studio-code-bin`
+- **IntelliJ IDEA**: `sudo pacman -S intellij-idea-community-edition`
+- **PyCharm**: `sudo pacman -S pycharm-community-edition`
+- **Typora**: `sudo pacman -S typora`
+- **网易云音乐**: `sudo pacman -S netease-cloud-music`
 
-- **Virtualbox**: sudo pacman -S virtualbox
+- **Virtualbox**: `sudo pacman -S virtualbox`
 
-- **optimus-manager**: sudo pacman -S optimus-manager optimus-manager-qt
+- **optimus-manager**: `sudo pacman -S optimus-manager optimus-manager-qt`
 
-- **Latte**: sudo pacmnan -S latte
+- **Latte**: `sudo pacmnan -S latte`
 
 ## 配置终端
 
@@ -117,7 +117,7 @@ git config --global user.email 1065423410@qq.com
     Categories=Application
     ```
 
-    ![image](../images/wiki/Clashy.png)
+    ![image](/images/wiki/Clashy.png)
 
 ## Anaconda
 
