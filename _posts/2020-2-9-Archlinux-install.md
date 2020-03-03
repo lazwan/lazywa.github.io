@@ -81,7 +81,7 @@ mount /dev/sda1 /mnt/boot
 pacstrap /mnt base base-devel linux linux-firmware dhcpcd dhclient netctl iw wpa_supplicant nano vim efibootmgr grub dialog
 ```
 
-### 1.9、生成 fatab，检查是否挂在成功
+### 1.9、生成 fatab，检查是否挂载成功
 
 ```shell
 genfstab -U /mnt >> /mnt/etc/fstab
