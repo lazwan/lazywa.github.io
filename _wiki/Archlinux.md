@@ -24,7 +24,7 @@ keywords: Linux config
 
 - **optimus-manager**: `sudo pacman -S optimus-manager optimus-manager-qt`
 
-- **Latte**: `sudo pacmnan -S latte`
+- **Latte**: `sudo pacman -S latte-dock`
 
 ## 配置终端
 
@@ -128,12 +128,14 @@ git config --global user.email 1065423410@qq.com
   chmod u+x Anaconda3-2019.10-Linux-x86_64.sh
   ./Anaconda3-2019.10-Linux-x86_64.sh
   ```
+## 配置源
 
-- 配置源
-
+- [Conda 源](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
+  
   ```shell
   vim ~/.condarc
   
+  # 清华大学源
   channels:
     - defaults
   show_channel_urls: true
@@ -147,9 +149,9 @@ git config --global user.email 1065423410@qq.com
     bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-    simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   ```
-
+  
 - pip 源
 
   ```shell
@@ -168,6 +170,21 @@ git config --global user.email 1065423410@qq.com
   https://pypi.tuna.tsinghua.edu.cn/simple/
   # 华中科技大学
   http://pypi.hustunique.com/
+  ```
+
+
+- [AUR 源](https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/)
+
+  ```shell
+  vim /etc/pacman.conf
+  
+  # 清华大学源
+  [archlinuxcn]
+  Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+  
+  # 安装 archlinuxcn-keyring 包导入 GPG key
+  sudo pacman -Syy
+  sudo pacman -S archlinuxcn-keyring
   ```
 
   
