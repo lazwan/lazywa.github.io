@@ -140,7 +140,6 @@ passwd root
 
 # 创建用户
 useradd -g wheel -m zhw
-passwd zhw
 
 # 添加 sudo 权限
 vim /etc/sudoers
