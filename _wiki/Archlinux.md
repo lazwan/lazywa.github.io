@@ -13,18 +13,15 @@ keywords: Linux config
 ## 安装常用软件
 
 - **Chrome**: `sudo pacman -S google-chrome`
-
 - **VSCode**: `sudo pacman -S visual-studio-code-bin`
 - **IntelliJ IDEA**: `sudo pacman -S intellij-idea-community-edition`
 - **PyCharm**: `sudo pacman -S pycharm-community-edition`
 - **Typora**: `sudo pacman -S typora`
 - **网易云音乐**: `sudo pacman -S netease-cloud-music`
-
 - **Virtualbox**: `sudo pacman -S virtualbox`
-
 - **optimus-manager**: `sudo pacman -S optimus-manager optimus-manager-qt`
-
 - **Latte**: `sudo pacman -S latte-dock`
+- **WPS**: `sudo pacman -S wps-office-cn ttf-wps-fonts wps-office-mui-zh-cn`
 
 ## 配置终端
 
@@ -66,8 +63,8 @@ git config --global user.email 1065423410@qq.com
 - Git http 代理
 
   ```shell
-  git config --global http.proxy 127.0.0.1:1080
-  git config --global https.proxy 127.0.0.1:1080
+  git config --global http.proxy socks5://192.168.0.254:1080
+  git config --global https.proxy socks5://192.168.0.254:1080
   ```
 
 - Git SSH 代理
@@ -79,7 +76,7 @@ git config --global user.email 1065423410@qq.com
       HostName github.com
       User git
       # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1080
-      # ProxyCommand nc -v -x 127.0.0.1:1080 %h %p
+      # ProxyCommand nc -v -x 192.168.0.254:1080 %h %p
   ```
 
   使用 HTTP 代理取消倒数第二行注释，安装 socat; 使用 SOCKS5 代理取消最后一行注释，安装 netcat。
@@ -118,6 +115,23 @@ git config --global user.email 1065423410@qq.com
     ```
 
     ![image](/images/wiki/Clashy.png)
+
+### 配置输入法
+
+- Fcitx
+
+  ```shell
+  sudo pacman -S fcitx fcitx-im fcitx-sunpinyin
+  
+  vim ~/.xprofile
+  
+  # 编辑 .xprofile 添加以下内容
+  export GTK_IM_MODULE=fcitx
+  export QT_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+  
+  # 重新登出登录后即可生效
+  ```
 
 ## Anaconda
 
@@ -186,5 +200,3 @@ git config --global user.email 1065423410@qq.com
   sudo pacman -Syy
   sudo pacman -S archlinuxcn-keyring
   ```
-
-  
