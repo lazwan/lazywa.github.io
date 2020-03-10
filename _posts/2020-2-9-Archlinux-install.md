@@ -164,7 +164,7 @@ systemctl enable sddm
 
 ```shell
 # 显卡驱动(AMD 自行解决)
-pacman -S nvidia nvidia-setting
+pacman -S nvidia nvidia-settings
 
 #　触控板驱动
 pacman -S xf86-input-synaptics

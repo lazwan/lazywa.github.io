@@ -121,14 +121,14 @@ git config --global user.email 1065423410@qq.com
 - Fcitx
 
   ```shell
-  sudo pacman -S fcitx fcitx-im fcitx-sunpinyin
+  sudo pacman -S fcitx fcitx-im kcm-fcitx fcitx-googlepinyin fcitx-sunpinyin
   
   vim ~/.xprofile
   
   # 编辑 .xprofile 添加以下内容
   export GTK_IM_MODULE=fcitx
   export QT_IM_MODULE=fcitx
-  export XMODIFIERS=@im=fcitx
+  export XMODIFIERS="@im=fcitx"
   
   # 重新登出登录后即可生效
   ```
