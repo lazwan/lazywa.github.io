@@ -9,6 +9,8 @@ keywords: Code, Single List
 
 ## 代码
 
+[https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/demo.cpp](https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/demo.cpp)
+
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
