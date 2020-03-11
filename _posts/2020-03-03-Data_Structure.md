@@ -1123,7 +1123,9 @@ ElementTypre Pop(Stack S) {
 |  14  |                         |         +         |  2 9 6 3 / + 5 - * 4  |
 |  15  |                         |                   | 2 9 6 3 / + 5 - * 4 + |
 
-**[实现代码]**[https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/Stack.cpp](https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/stack.cpp)
+**[实现代码]**
+
+[https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/Stack.cpp](https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/Stack.cpp)
 
 ```c++
 #include <bits/stdc++.h>
