@@ -1199,3 +1199,203 @@ int main()
 - 深度优先搜索
 - 回溯算法
 - ......
+
+#### 2.3.1、队列及顺序结构存储实现
+
+队列(Queue)：具有一定操作约束的线性表
+
+插入和删除操作：只能在一段插入，在另一端删除;
+
+- 数据插入：入队列(AddQ)
+- 数据删除：出队列(DeleteQ)
+
+先进先出：FIFO
+
+**[队列的抽象数据类型描述]**
+
+类型名称：队列(Queue)
+
+数据对象集：一个有 0 个或者多个元素的有穷线性表
+
+操作集：长度 MaxSize 的队列 Q 属于 Queue，队列元素 item 属于 ElementType
+
+1. Queue CreatQueue(int MaxSize)：生成长度为 MaxSize 的空队列;
+2. int IsFullQ(Queue Q, int MaxSize)：判断队列 Q 是否已满;
+3. void AddQ(Queue Q, ElementType item)：将数据元素 item 插入队列 Q 中;
+4. int IsEmptyQ(Queue Q)：判断队列 Q 是否为空;
+5. ElementType DeleteQ(Queue Q)：将队头元素从队列中删除并返回;
+
+**[队列的顺序存储实现]**( 循环队列)
+
+顺序结构存储通常由一个**一维数组**和一个记录队列头元素的变量 front 以及一个记录队尾元素的变量 rear 组成。
+
+```c
+#define MaxSize < 存储数据元素的最大个数>
+
+struct QNode {
+    ElementType Data[MaxSize];
+    int rear;
+    int front;
+};
+typedef struct QNode *Queue;
+```
+
+**[入队列]**
+
+```c
+void AddQ(Queue PtrQ, Elementtype item) {
+    if ((PtrQ->rear+1) % MaxSize == PtrQ->front) {
+        printf("队列满");
+        return;
+    }
+    PtrQ->rear=(PtrQ->rear+1) % MaxSize;
+    PtrQ->Data[PtrtQ->rear] = item;
+}
+```
+
+**[出队列]**
+
+```c
+ElementType DeleteQ(Queue PtrQ) {
+    if (PtrQ->front == PtrQ->rear) {
+        printf("队列空");
+        return ERROR
+    } else {
+        PtrQ->front = (PtrQ->front+1) % MaxSize;
+        return PtrQ->Data[PtrQ->front];
+    }
+}
+```
+
+#### 2.3.2、队列的链式存储实现
+
+链式存储结构也可以用一个单链表实现。插入和删除操作分别在链表的两头进行。
+
+```c
+struct Node {
+    ElementType Data;
+    struct Node *Next;
+};
+struct QNode {
+    struct Node *rear; // 指向队尾节点
+    struct Node *front; // 指向队头节点
+};
+typedef struct QNode *Queue;
+Queue PtrQ;
+```
+
+![image](/images/blog/数据结构/2.3.2_1.png)
+
+**[入队列]**
+
+```c
+void AddQ(Queue PtrQ, Elementtype item) {
+    if ((PtrQ->rear+1) % MaxSize == PtrQ->front) {
+        printf("队列满");
+        return;
+    }
+    struct Node *RearCell = (Node*)malloc(sizeof(Node));
+    RearCell->Data = item;
+    RearCell->Next = NULL;
+    PtrQ->rear->Next = RearCell;
+    PtrQ->rear = RearCell;
+}
+```
+
+**[出队列]**(不带头节点的链式队列)
+
+```c
+ElementType DeleteQ(Queue PtrQ) {
+    struct Node *FrontCell;
+    ElementType FrontElem;
+    if (PtrQ->front == NULL) {
+        print("队列空");
+        return ERROR;
+    }
+    FrontCell = PtrQ->front;
+    if (PtrQ->front = PtrQ->rear) {
+        PtrQ->front = PtrQ->rear = NULL:
+    } else {
+        PtrQ->front = PtrQ->rear->Data;
+    }
+    FrontElem = FrontCell->Data;
+    free (FrontCell);
+    return FrontElem;
+}
+```
+
+#### 2.4、多项式的加减运算实现
+
+![image](/images/blog/数据结构/2.4_1.png)
+
+主要思路：相同指数的项系数相加，其余部分进行拷贝。
+
+**「实现」**
+
+采用不带头结点的单向链表，按照指数递减的顺序排列各项。
+
+![image](/images/blog/数据结构/2.4_2.png)
+
+```c
+struct PloyNode {
+    int coef; // 系数
+    int expon; // 指数
+    struct PloyNode *link; // 指向下一个节点的指针
+};
+typedef struct PolyNode *Ploynomial;
+Polynomial P1, P2;
+```
+
+**算法思路：**两个指针 P1 和 P2 分别指向两个多项式第一个结点，不断循环：
+
+- P1->expon == P2->expon：系数相加。若结果不为 0,则作为结果多项式对应项的系数。同时，P1 和 P2 都分别指向下一项;
+- P1->expon > P2->expon：将 P1 的当前项存入结果多项式，并使 P1 指向下一项;
+- P1->expon < P2->expon：将 P2 的当前项存入结果多项式，并使 P2 指向下一项;
+
+- 当某一多项式处理完时，将另一个多项式的所有结点依次复制到结果多项式中去。
+
+```c
+void Attach(int c, int e, Polynomial *pRear) {
+    Polynomial P;
+    P = (Polynomial)malloc(sizeof(struct PolyNode));
+    P->coef = c;
+    P->expon = e;
+    P->link = NULL;
+    (*pRear)->link = P;
+    *pRear = P;
+}
+
+Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
+    Polynomial front, rear, temp;
+    int sum;
+    rear = (Polynomial)malloc(sizeof(struct PolyNode));
+    front = rear;
+    while (P1 && P2) {
+        switch (Compare(P1->expon, P2->expon)) {
+            case 1:
+                Attach(P1->coef, P1->expon, &rear);
+                P1 = P1->link;
+                break;
+            case -1:
+                Attach(P2->coef, P2->expon, &rear);
+                P2 = P2->link;
+                break;
+            case 0:
+                sum = P1->coef = P2->coef;
+                if (sum) Attach(sum, P1->expon, &rear);
+                P1 = P1->link;
+                P2 = P2->link;
+                break;
+        }
+    }
+    // 将未处理完的另一个多项式所有节点依次复制到结果多项式中去
+    for (; P1; P1 = P1->link) Attach(P1->coef, P1->expon, &rear);
+    for (; P2, P2 = P2->link) Attach(P2->coef, P2->expon, &rear);
+    rear->link = NULL;
+    temp = front;
+    front = front->link; // 让 front 指向多项式的第一个非零项
+    free(temp);
+    return front;
+}
+```
+
