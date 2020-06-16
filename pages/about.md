@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: 简介
 description: 打码改变世界
 keywords: Zhuang Ma, 马壮
 comments: true
