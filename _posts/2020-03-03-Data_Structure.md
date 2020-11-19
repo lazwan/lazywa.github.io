@@ -268,7 +268,7 @@ void sub(int b[]) {
 int main()
 {
     int a[10];
-   	for (int i = 0; i < N; i++) {
+       for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
     sub(a);
@@ -430,7 +430,7 @@ $$
 - 举例：
 
   - **类型名称：**矩阵(Matrix)
-  - **数据对象集：**一个 MxN 的矩阵![image](/images/blog/数据结构/Matrix.png)由MxN个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
+  - **数据对象集：**一个 MxN 的矩阵![image](../images/blog/数据结构/Matrix.png)由MxN个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
   - **操作集：**对于任意矩阵 A、B、C 属于 Matrix，以及整数 i、j、k、M、N
     - Matrix Creat(int M, int N)：返回一个 MxN 的空矩阵;
     - int GetMaxRow(Matrix A)：返回矩阵 A 的总行数;
@@ -516,7 +516,7 @@ $$
               ThisSum = 0; // ThisSum 是从 A[i] 到 A[j] 的子列和
               for(k = i; k <= j; k++)
                   ThisSum += A[k];
-             	if(ThisSum > MaxSum) // if True
+                 if(ThisSum > MaxSum) // if True
                   MaxSum = ThisSum;// 更新结果
           }
       }
@@ -553,7 +553,7 @@ $$
 
 - 算法3：分治
 
-  ![image](/images/blog/数据结构/分治.png)
+  ![image](../images/blog/数据结构/分治.png)
 
   ```c
   static int Find_Max_Crossing_SubArray(int * nums, int start, int mid, int end) {
@@ -646,7 +646,7 @@ $$
 
 **[例]：一元多项式及其计算**
 
-**一元多项式**:![image](/images/blog/数据结构/fx.png)
+**一元多项式**:![image](../images/blog/数据结构/fx.png)
 
 **主要运算**：多项式相加、相减、相乘等
 
@@ -654,23 +654,23 @@ $$
 
 - 关键数据：
   - 多项式项数 n
-  - 各项系数![image](/images/blog/数据结构/ai.png)及指数 i
+  - 各项系数![image](../images/blog/数据结构/ai.png)及指数 i
 
 - 表示方法：
 
   - **方法1：顺序存储结构直接表示(虽然方便，但是空间浪费)**
 
-    ![image](/images/blog/数据结构/2.1.1_1.png)
+    ![image](../images/blog/数据结构/2.1.1_1.png)
 
   - **方法2：顺序储存结构表示非零项**
 
-    ![image](/images/blog/数据结构/2.1.1_2.png)
+    ![image](../images/blog/数据结构/2.1.1_2.png)
 
-    ![image](/images/blog/数据结构/2.1.1_3.png)
+    ![image](../images/blog/数据结构/2.1.1_3.png)
 
   - **方法3：链表结构存储非零项**
 
-    ![image](/images/blog/数据结构/2.1.1_4.png)
+    ![image](../images/blog/数据结构/2.1.1_4.png)
 
 **[启示]：**
 
@@ -701,9 +701,9 @@ $$
 
 利用数组的**连续存储空间顺序存放**线性表的各元素
 
-![image](/images/blog/数据结构/2.1.2_1.png)
+![image](../images/blog/数据结构/2.1.2_1.png)
 
-注：数组：Data	最后一个元素位置：Last
+注：数组：Data    最后一个元素位置：Last
 
 **「主要操作实现」**
 
@@ -732,7 +732,7 @@ $$
 
 3. 插入（第 i (1 <= i <= n+1) 个位置上插入一个值为 X 的新元素）
 
-   ![image](/images/blog/数据结构/2.1.2_2.png)
+   ![image](../images/blog/数据结构/2.1.2_2.png)
 
    ```c
    void Insert (ElementType X, int i, List PtrL) {
@@ -756,7 +756,7 @@ $$
 
 4. 删除（删除表的第 i (1 <= i <= n+1) 个位置上的元素 ）
 
-   ![imag](/images/blog/数据结构/2.1.2_3.png)
+   ![imag](../images/blog/数据结构/2.1.2_3.png)
 
    ```c
    void Delete (int i, List PtrL) {
@@ -776,10 +776,13 @@ $$
 #### 2.1.3、广义表
 
 **「例」二元多项式该如何表示？比如，给定二元多项式：**
+
 $$
 P(x,y)=9x^{13}y^2+4x^{12}+15x^8y^3-x^8y+3x^2
 $$
+
 **「分析」**可将上述二元多项式看成关于 x 的一元多项式：
+
 $$
 P(x,y)=(9y^2+4)x^{12}+(15y^3-y)x^8+3x^2
 $$
@@ -790,7 +793,7 @@ $$
 
 所以，上述二元多项式可以用**“复杂”链表**表示为：
 
-  ![image](/images/blog/数据结构/2.1.3_1.png)
+  ![image](../images/blog/数据结构/2.1.3_1.png)
 
 **广义表(Generalized List)**
 
@@ -810,7 +813,7 @@ struct GNode [
 ];
 ```
 
-![image](/images/blog/数据结构/2.1.3_2.png)
+![image](../images/blog/数据结构/2.1.3_2.png)
 
 #### 2.1.4、多重链表
 
@@ -826,7 +829,7 @@ struct GNode [
 1. 一是数组的**大小需要事先确定**;
 2. 对于**“稀疏矩阵”**，将造成大量的**存储空间浪费**;
 
-![image](/images/blog/数据结构/2.1.3_3.png)
+![image](../images/blog/数据结构/2.1.3_3.png)
 
 **「分析」采用一种典型的多重链表——十字链表来存储稀疏矩阵**
 
@@ -839,7 +842,7 @@ struct GNode [
   - 行指针(向  右指针) Right
   - 列指针(向下指针) Down
 
-![image](/images/blog/数据结构/2.1.3_4.png)
+![image](../images/blog/数据结构/2.1.3_4.png)
 
 - 左上角 Term 结点：稀疏矩阵的入口结点，可以了解到矩阵的有关信息：矩阵有 4 行 5 列，非零项有 7 项;
 
@@ -850,7 +853,7 @@ struct GNode [
 
 头结点的表示为“Head”，矩阵非 0  元素结点的标识值wei“Term”;
 
-![image](/images/blog/数据结构/2.1.3_5.png)
+![image](../images/blog/数据结构/2.1.3_5.png)
 
 #### 2.2.1、堆栈
 
@@ -878,7 +881,7 @@ $$
 
   ```
   6 2 / 3 - 4 2 * +
-  -->	 3 3 - 4 2 * +
+  -->     3 3 - 4 2 * +
   -->  0 4 2 * +
   -->  0 8 +
   -->  8
@@ -906,7 +909,7 @@ $$
 4. int IsEmply (Stack S)：判断堆栈 S 是否为空;
 5. ElementType Pop (Stack S)：删除并返回栈顶元素;
 
-![image](/images/blog/数据结构/2.2.1_1.png)
+![image](../images/blog/数据结构/2.2.1_1.png)
 
 Push 和 Pop 可以穿插交替进行：
 
@@ -1284,7 +1287,7 @@ typedef struct QNode *Queue;
 Queue PtrQ;
 ```
 
-![image](/images/blog/数据结构/2.3.2_1.png)
+![image](../images/blog/数据结构/2.3.2_1.png)
 
 **[入队列]**
 
@@ -1326,7 +1329,7 @@ ElementType DeleteQ(Queue PtrQ) {
 
 #### 2.4、多项式的加减运算实现
 
-![image](/images/blog/数据结构/2.4_1.png)
+![image](../images/blog/数据结构/2.4_1.png)
 
 主要思路：相同指数的项系数相加，其余部分进行拷贝。
 
@@ -1334,7 +1337,7 @@ ElementType DeleteQ(Queue PtrQ) {
 
 采用不带头结点的单向链表，按照指数递减的顺序排列各项。
 
-![image](/images/blog/数据结构/2.4_2.png)
+![image](../images/blog/数据结构/2.4_2.png)
 
 ```c
 struct PloyNode {
@@ -1399,3 +1402,700 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 }
 ```
 
+### 3、树 (Tree)
+
+#### 3.1、树的定义
+
+**树的定义**：n(n >= 0) 个结点构成的有限集合
+
+当 n= 0 时，称为空树
+
+对于任意棵非空树(n > 0)，它具备一下性质：
+
+1. 树中有一个称为“根(root)”的特殊结点，用 r 表示；
+2. 其余结点可分为 m (m > 0) 个互不相交的有限集T1, T2, ..., Tm，其中每个集合本身又是一棵树，称为原来树的“子树 (SubTree)”
+
+**树与非树：**
+
+- 子树是不相交的
+- 除了子根结点外，每个结点有且仅有一个父结点
+- 一颗 N 个结点的树有 N-1 条边
+
+#### 3.2、树的一些基础术语
+
+- **节点的度(Degree)**：结点的子树个数
+- **树的度**：树的所有结点中最大的度
+- **叶结点(Leaf)**：度为 0 的结点
+- **父结点(Parent)**：有子树的结点时其他子树的根结点的父结点
+- **子结点(Child)**：若 A 结点是 B 结点的父结点，则称 B 结点是 A 结点的子结点；子结点也称为孩子节点
+- **兄弟结点(Sibling)**：具有同一父结点的各结点彼此是兄弟结点
+- **路径和路径的长度**：从结点 n1 到 nk 的路径为一个结点序列 n1, n2, ... , nk, ni，是 n(i+1) 的父结点。路径所包含边的个数为路径的长度
+- **祖先结点(Ancestor)**：沿树根到某一结点路径的所有结点都是这个结点的祖先结点
+- **子孙结点(Descendant)**：某一结点的子树中所有的结点时这个结点的子孙
+- **结点的层次(Level)**：规定根结点在 1 层，其它任一结点的层数时其父结点的层数加 1
+- **树的深度(Depth)**：树中所有结点中最大层次的时这个这棵树的深度
+
+#### 3.3、树的表示
+
+- 儿子兄弟表示法
+
+- 旋转45° -> 二叉树
+
+#### 3.4、二叉树
+
+- 二叉树的定义
+
+  **二叉树 T**：一个有穷的结点集合
+
+  这个集合可以为空
+
+  若不为空，则它是由根结点和称为其左子树 TL 和右子树 TR 的两个不相交的二叉树组成。
+
+- 二叉树具有五种基本形态
+  1. 为空
+  2. 只有一个根结点
+  3. 有一个根结点和一个左子树
+  4. 有一个根结点和一个右子树
+  5. 有一个根结点和一个左子树和一个右子树
+- 二叉树的子树有左右顺序之分
+- 特殊二叉树
+  1. 斜二叉树(Skewed Binary Tree)
+  2. 完美二叉树(Perfect Binary Tree)[满二叉树(Full Binary Tree)]
+  3. 完全二叉树(Complete Binary Tree)：从 n 个结点的二叉树，对树中结点按从上至下、从左到右顺序进行编号，编号为 i (1 <= i <= n) 结点与满二叉树中编号为 i 结点在二叉树中位置相同
+
+- 二叉树的几个重要性质
+  1. 一个二叉树第 i 层的最大结点数为：2^(i-1), i >=1
+  2. 深度为 k 的二叉树有最大结点数为：2^k-1, k>=1
+  3. 对任何非空二叉树 T，若 n0 表示叶结点的个数、n2是度为 2 的非叶结点个数，那么两者满足关系n0 = n2 + 1
+
+
+#### 3.5、二叉树的抽象数据类型定义
+
+- **类型名称**：二叉树
+
+- **数据对象集**：一个有穷的结点集合
+
+  若不为空，则由根结点和其左、右二叉子树组成
+
+- **操作集**：BT ∈ BinTree, Item ∈ ElementType，重要操作有：
+
+  1. Boolean IsEmpty(BinTree BT)：判别 BT 是否为空
+  2. void Traversal(BinTree BT)：遍历，按某顺序访问每个结点
+  3. BinTree CreatBinTree()：创建一个二叉树
+
+- **常用的遍历方法**：
+
+  - void PreOrderTraversal(BinTree BT)：先序 --> 根、左子树、右子树
+  - void InOrderTraversal(BinTree BT)：中序 --> 左子树、根、右子树
+  - void PostOrderTraversal(BinTree BT)：后序 --> 左子树、右子树、根
+  - void LevelOrderTraversal(BinTree BT)：层次遍历，从上到下、从左到右
+
+#### 3.6、二叉树的存储结构
+
+- 顺序存储结构
+
+  **完全二叉树**：按从上到下、从左到右顺序存储 n 个结点的完全二叉树的结点父子关系:
+
+  ![image-20201109165349888](../images/blog/tree/image-20201109165349888.png)
+
+  | 结点 |  A   |  B   |  O   |  C   |  S   |  M   |  Q   |  W   |  K   |
+  | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+  | 序号 |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |
+
+  1. 非根结点的父结点的序号是 i / 2
+  2. 结点的左孩子的序号是 2i (若 2i <= n，否则没有左孩子)
+  3. 结点的右孩子的序号是 2i + 1 (若 2i + 1 <= n，否则没有右孩子)
+
+  **一般二叉树**也可以采用这种结构，但是会造成空间浪费
+
+  ![image-20201109170742034](../images/blog/tree/image-20201109170742034.png)
+
+- 链表存储
+
+  ```c
+  typedef struct TreeNode *BinTree;
+  typedef BinTree Position;
+  struct TreeNode {
+      ElementType data;
+      BinTree Left;
+      BinTree Right;
+  };
+  ```
+
+  ![image-20201109171327944](../images/blog/tree/image-20201109171327944.png)
+
+#### 3.7、二叉树的遍历
+
+1. 先序遍历:
+
+   遍历过程：
+
+   1. 访问根结点
+
+     2. 先序遍历其左子树
+     3. 先序遍历其右子树
+
+   ```c++
+   void PreOrderTraversal(BinTree BT) {
+       if (BT) {
+           cout << BT->data << " ";
+           PreOrderTraversal(BT->left);
+           PreOrderTraversal(BT->right);
+       }
+   }
+   ```
+
+2. 中序遍历
+
+   遍历过程：
+
+             1. 中序遍历其左子树
+             2. 访问根结点
+            3. 中序遍历其右子树
+
+   ```c++
+   void InOrderTraversal(BinTree BT) {
+       if (BT) {
+           PreOrderTraversal(BT->left);
+           cout << BT->data << " ";
+           PreOrderTraversal(BT->right);
+       }
+   }
+   ```
+
+3. 后续遍历
+
+   遍历过程：
+
+          1. 后序遍历其左子树
+                   2. 后序遍历其右子树
+                3. 访问根结点
+
+   ```c++
+   void PostOrderTraversal(BinTree BT) {
+       if (BT) {
+           PreOrderTraversal(BT->left);
+           PreOrderTraversal(BT->right);
+           cout << BT->data << " ";
+       }  
+   }
+   ```
+
+4. 层序遍历
+
+   二叉树遍历的核心问题：**二维结构的线性化**
+
+   --> 从结点访问其左、右儿子结点
+
+   --> 访问左儿子后，右儿子结点怎么办？
+
+   - 需要一个存储结构保存暂时不访问的结点
+   - 存储结构：堆栈、队列
+
+   **队列实现**：遍历从根结点开始。首先讲根结点入队，然后开始执行循环：结点出队、访问该节点、其左右儿子入队
+
+   ```c++
+   void LevelOrderTraversal(BinTree BT) {
+       Queue Q; BinTree T;
+       if (!BT) return; // 若是空树直接返回
+       Q = CreatQueue(MaxSize); // 创建并初始化队列 Q
+       AddQ(Q, BT);
+       while (!IsEmptyQ(Q)) {
+           T = DeleteQ(Q);
+           cout << T->data << " "; // 访问取出队列的结点
+           if (T->left) AddQ(Q, T->left);
+           if (T->right) AddQ(Q, T->right);
+       }
+   }
+   ```
+
+
+- 示例
+
+  1. **【例】**遍历二叉树的应用：输出二叉树的叶子结点
+
+     ```c++
+     void PreOrderTraversal(BinTree BT) {
+         if (BT) {
+             if (!BT->left && !BT->right)
+                 cout << BT->data << " ";
+             PreOrderTraversal(BT->left);
+             PreOrderTraversal(BT->right);
+         }
+     }
+     ```
+
+  2. **【例】**求二叉树的高度
+
+     ```c++
+     int PostOrderTraversal(BinTree BT) {
+         int HL, HR, MaxH;
+         if (BT) {
+             HL = PreOrderTraversal(BT->left); // 求左子树的深度
+             HR = PreOrderTraversal(BT->right); // 求右子树的深度
+             MaxH = (HL > HR) ? HL : HR;
+             return (MaxH + 1);
+         } else {
+             return 0;
+         }
+     }
+     ```
+
+  3. **【例】**二元运算表达式树及其遍历
+
+     ![image-20201110181430313](../images/blog/tree/image-20201110181430313.png)
+
+     三种遍历可以得到三种不同的访问结果：
+
+     1. 先序遍历得到前缀表达式：`+ + a * b c * + * d e f g`
+     2. 中序遍历得到中缀表达式：`a + b * c + d * e + f * g` (中缀表达式会受到**运算符优先级**的影响)
+     3. 后序遍历得到后缀表达式：`a b c * + d e * f + g * +`
+
+  4. **【例】**由两种遍历序列确定二叉树
+
+     **必须要有一个是中序遍历才行**
+
+     **【例】**先序和中序遍历序列来确定一颗二叉树
+
+     - 根据先序遍历序列第一个结点确定根结点
+     - 根据根结点在中序遍历序列中分割出左右两个子序列
+     - 对左子树和右子树分别递归使用相同的方法继续分解
+
+  5. **【例】**树的同构问题
+
+     给定两棵树 T1 和 T2。如果 T1 可以通过若干次左右孩子互换就变成 T2，则我们称两棵树是“同构”的。
+
+     输入格式：输入两棵树的信息：
+
+     - 现在先在一行中给出该树的结点数，随后 N 行
+     - 第 i 行对应编号第 i 个结点，给出该节点中存储的字母、其左孩子结点的编号、右孩子结点的编号
+     - 如果孩子结点为空，则在相应位置上给出”-“
+
+     ```
+     8
+     A 1 2
+     B 3 4
+     C 5 -
+     D - -
+     E 6 -
+     G 7 -
+     F - -
+     H - -
+     8
+     G - 4
+     B 7 6
+     F - -
+     A 5 1
+     H - -
+     C 0 -
+     D - -
+     E 2 -
+     ```
+
+     **【二叉树表示】**
+
+     结构数组表示二叉树：静态链表
+
+     ![image-20201111160708909](../images/blog/tree/image-20201111160708909.png)
+
+     | 存储内容 | A    | B    | C    | D    |
+     | -------- | ---- | ---- | ---- | ---- |
+     | left     | -1   | 2    | -1   | -1   |
+     | right    | 1    | 3    | -1   | -1   |
+     | 下标     | 0    | 1    | 2    | 3    |
+
+     ```c++
+     #define MaxTree 10
+     #define ElementType char
+     #define Tree int
+     #define Null -1
+     
+     struct TreeNode {
+         ElementType Element;
+         Tree left;
+         Tree right;
+     } T1[MaxTree], T2[MaxTree];
+     ```
+
+     **【程序框架搭建】**
+
+     ```c++
+     int main() {
+         Tree R1, R2;
+         R1 = BuildTree(T1);
+         R2 = BuildTree(T2);
+         if (Isomorphic(R1, R2)) cout << "Yes" << endl;
+         else cout << "No" << endl;
+         return 0;
+     }
+     
+     Tree BuildTree(struct TreeNode T[]) {
+              int i, check[MaxSize] = {0};
+              char cl, cr;
+              cin >> N;
+              if(N) {
+                  for (i = 0; i < N; i++) chech[i] = 0;
+                  for (i = 0; i < N; i++) {
+                      cin >> T[i].Element >> cl >> cr;
+                      if (cl != '-') {
+                          T[i].left = cl - '0';
+                          check[T[i].left] = 1;
+                      } else {
+                          T[i].left = Null;
+                      }
+                      if (cr != '-') {
+                      T[i].right = cr - '0';
+                      check[T[i].right] = 1;
+                  } else {
+                      T[i].right = Null;
+                  }
+              }
+              for (i = 0; i < N; i++)
+                  if (!check[i]) break;
+              Root = i;
+          }
+          return Root;
+      }
+      
+      int Isomorphic (Tree R1, Tree R2) {
+          if ((R1 == R2) && (R2 == Null)) return 1;
+          if (((R1 == Null) && (R2 != Null)) || ((R1 != Null) && (R2 == Null))) return 0;
+          if (T1[R1].Element != T2[R2].Element) return 0;
+          if ((T1[R1].left == Null) && (T2[R2].left == Null))
+              return Isomorphic(T1[R1].right, T2[R2].right);
+          
+          if (((T1[R1].left != Null) && (T2[R2].left != Null)) && ((T1[T1[R1].left].Element) == (T2[T2[R2].left].Element)))
+              return (Isomorphic(T1[R1].left, T2[R2].left) && Isomorphic(T1[R1].right, T2[R2].right));
+          else 
+              return (Isomorphic(T1[R1].left, T2[R2].right) && Isomorphic(T1[R1].right, T2[R2].left));
+      }
+     ```
+
+#### 3.8、**二叉搜索树 (BST, Binary Search Tree)**
+
+一颗二叉树，可以为空；如果不为空，满足一下==以下性质：
+
+1. 非空**左子树**的所有**键值小于其根结点**的键值
+2. 非空**右子树**的所有**键值大于其根结点**的键值
+3. **左、右子树都是二叉搜索树**
+
+**二叉搜索树操作的特别函数：**
+
+- `Position Find(ElementType X, BinTree BST)`：从二叉搜索树 BST 中查找元素 X，返回其所在结点的地址；
+- `Position FindMin(BinTree BST)`：从二叉搜索树 BST 中查找并返回最小元素所在的结点地址；
+- `Position FindMax(BinTree BST)`：从二叉搜索树 BST 中查找并返回最大元素所在的结点地址；
+- `BinTree Insert(ElementType X, BinTree BST)`
+- `BinTree Delete(ElementType X, BinTree BST)`
+
+**二叉搜索树的查找操作：**
+
+- 查找从根结点开始，如果树为空，返回NULL
+
+- 若搜索树非空，则根结点关键字和 X 进行比较，并进行不同处理：
+
+  1. 若 X 小于根结点键值，只需要在左子树中继续搜索；
+  2. 若 X 大于根结点键值，在右子树中进行继续搜索；
+  3. 若两者比较结果相等，搜索完成，返回指向此节点的指针；
+
+  ```c++
+  Position Find(ElementType X, BinTree BST) {
+      if (!BST) // 查找失败
+          return NULL;
+      if (X > BST->data) 
+          return Find(X, BST->right); // 在左子树继续查找
+      else if (X < BST->data) 
+          return Find(X, BST->left); // 在右子树继续查找
+      else 
+          return BST; // 查找成功，返回结点的地址
+  }
+  ```
+
+  ```c++
+  Position Find(ElementType X, BinTree BST) {
+      while (BST) {
+          if (X > BST->data)
+              BST = BST->right;
+          else if (X < BST->data)
+              BST = BST->left;
+          else
+              return BST;
+      }
+      return NULL;
+  }
+  ```
+
+- 查找最大值和最小值
+
+  - 最大元素一点是在树的最右分枝的端结点上
+  - 最小元素一定是在树的最左分枝的端结点上
+
+  ```c++
+  Position FindMin(BinTree BST) {
+      if (!BST)
+          return NULL;
+      else if (!BST->left)
+          return BST;
+      else
+          return FindMin(BST->left);
+  }
+  ```
+
+  ```c++
+  Position FindMax(BinTree BST) {
+      if (BST)
+          while (BST-right) BST = BST->right;
+      return BST;
+  }
+  ```
+
+**二叉搜索树的插入**
+
+关键是要找到元素应该插入的位置，可采用与 Find 类似的方法
+
+```c++
+BinTree Insert(ElementType X, BinTree BST) {
+    if (!BST) {
+        BST = malloc(sizeof(struct TreeNode));
+        BST->data = X;
+        BST->left = BST->right = NULL;
+    } else {
+        if (X < BST->data)
+            BST->left = Insert(X, BST->left);
+        else if (X > BST->dats)
+            BST->right = Insert(X, BST->right);
+    }
+    return BST;
+}
+```
+
+**二叉搜索树的删除**
+
+三种情况：
+
+1. 要删除的是叶结点：直接删除，并再修改其父结点指针 -> 置为 NULL
+
+2. 要删除的结点只有一个孩子结点：将其父亲结点的指针指向要删除的系欸但那的孩子结点
+
+3. 要删除的结点有左、右两颗子树：
+
+   用另一结点代替被删除结点：**右子树的最小元素**或者**左子树的最大元素**
+
+```c++
+BinTree Delete (ElementType X, BinTree BST) {
+    Position Tmp;
+    if (!BST) cout << "要删除的元素找不到" << endl;
+    else if (X < BST->data) // 左子树递归删除
+        BST->left = Delete(X, BST->left);
+    else if (X > BST->data) // 右子树递归删除
+        BST->right = Delete(X, BST->right);
+    else { // 找到要删除的结点
+        if (BST->left && BST->right) { // 被删除结点有左右两个子结点
+            Tmp = FindMin(BST->right); // 在右子树中找最小的元素填充删除的结点
+            BST->data = Tmp->data;
+            BST->right = Delete(BST->data, BST->right); // 在删除结点的右子树中删除最小元素
+        } else { // 被删除结点有一个或无子结点
+            Tmp = BST;
+            if (!BST->left) // 有右孩子或无子结点
+                BST = BST->right;
+            else if(!BST->right) // 有左孩子或无子结点
+                BST = BST->left;
+            free(Tmp);
+        }
+    }
+    return BST;
+}
+```
+
+#### 3.9、平衡二叉树
+
+**【例】**搜索树结点不同插入次序，将导致不同的深度和平均查找长度 ASL
+
+![image-20201115141353096](../images/blog/tree/image-20201115141353096.png)
+
+**平衡因子 **(Balance Factor, 简称 BF)：**BF(T) = h_L - h_R**
+
+其中 h_L 和 h_R 分别为 T 的左、右子树的高度
+
+**平衡二叉树(Balanced Binary Tree) (AVL树)**：空树，或者任一结点左、右子树高度差的绝对值不超过 1，即|BF(T)| <= 1
+
+**平衡二叉树的调整**
+
+“麻烦结点” 在不平衡的“发现者”右子树的右子树：RR 插入，需要 RR 旋转(右单旋)
+
+![image-20201115170804281](../images/blog/tree/image-20201115170804281.png)
+
+“麻烦结点” 在不平衡的“发现者”左子树的左子树：LL 插入，需要 LL 旋转(左单旋)
+
+![image-20201115170903525](../images/blog/tree/image-20201115170903525.png)
+
+“麻烦结点” 在不平衡的“发现者”左子树的右子树：LR 插入，需要 LR 旋转
+
+![image-20201115171117839](../images/blog/tree/image-20201115171117839.png)
+
+“麻烦结点” 在不平衡的“发现者”右子树的左子树：RL 插入，需要 RL 旋转
+
+![image-20201117151523311](../images/blog/tree/image-20201117151523311.png)
+
+
+- **判别是否是同一颗二叉搜索树**
+
+  给定一个插入序列就可以唯一确定一颗二叉搜索树，然而一颗给定的二叉搜索树却可以有多种不同的插入序列得到。
+
+  **【例】**按照序列 {2, 1, 3} 和 {2, 3, 1} 插入初始为空的二叉搜索树，都得到一样的结果。
+
+  **问题：对于输入的各种插入序列，你需要判断他们是否能生成一样的二叉搜索树？**
+
+  **[INPUT]**
+
+  ```
+  4 2 // 结点个数、需要比较的树的个数
+  3 1 4 2
+  3 4 1 2
+  3 2 4 1
+  
+  2 1
+  2 1
+  1 2
+  0
+  ```
+
+  **[OUTPUT]**
+
+  ```
+  Yes
+  No
+  No
+  ```
+
+  **求解思路**
+
+  两个序列是否对应相同搜索树的判别
+
+  1. 分别建两棵搜索树的判别方法：根据两个序列反别建树，再判别树是否一样
+
+  2. 不建树的判别方法：递归判断左右子树是否相同
+
+     ![image-20201118160809603](../images/blog/tree/image-20201118160809603.png)
+
+  3. 建一棵树，再判别其他序列是否与该树一致
+
+     **求解思路**
+
+     1. 搜索树表示
+     2. 建搜索树 T
+     3. 判别一序列是否与搜索树 T 一致
+
+     ```c++
+     typedef struct TreeNode *Tree;
+     struct TreeNode {
+         int v;
+         Tree left, right;
+         int flag;
+     };
+     ```
+
+     ```c++
+     int main(void) {
+         int N, L;
+         Tree T;
+         
+         cin >> N;
+         while(N) {
+             cin >> L;
+             T = MakeTree(N);
+             for (int i = 0; i < L; i++) {
+                 if (Judge(T, N)) cout << "Yes" << endl;
+                 else cout << "No" << endl;
+                 ResetT(T); // 清除 T 中的标记 flag
+             }
+             FreeTree(T);
+             cin >> N;
+         }
+         return 0;
+     }
+     ```
+
+     ```C++
+     Tree NewNode(int V) {
+         Tree T = (Tree)malloc(sizeof(struct TreeNode));
+         T->v = V;
+         T->left = T->right = NULL;
+         T->flag = 0;
+         return T;
+     }
+     
+     Tree Insert(Tree T, int V) {
+         if(!T) T = NewNode(V);
+         else {
+             if(V > T->v)
+                 T->right = Insert(T->right, V);
+                else
+                 T->left = Insert(T->left, V);
+         }
+         return T;
+     }
+     
+     Tree MakeTree(int N) {
+         Tree T;
+         int V;
+         cin >> V;
+         T = NewNode(V);
+         for (int i = 1; i < N; i++) {
+             cin >> V;
+             T = Insert(T, V);
+         }
+         return T;
+     }
+     ```
+
+     ```c++
+     // 在树 T 中按顺序搜索序列2中的每一个数
+     // 如果每次搜索经过的结点再前面均出现过，则一致，否则不一致
+     int check(Tree T, int V) {
+         if (T->flag){
+             if(V < T->v)
+                 return check(T->left, V);
+             else if(V > T->v)
+                 return check(T->right, V);
+             else
+                 return 0;
+         } else {
+             if(V == T->v) {
+                 T->flag = 1;
+                 return 1;
+             } else {
+                 return 0;
+             }
+         }
+     }
+     ```
+
+     ```c++
+     int Judge(Tree T, int N) {
+         int V, flag = 0;
+         cin >> V;
+         if (V != T->v) flag = 1;
+         else T->flag = 1;
+         
+         for (int i = 1; i < N; i++) {
+             cin >> V;
+             if((!flag) && (!check(T, V))) flag = 1;
+         }
+         if(flag) return 0;
+         else return 1;
+     }
+     ```
+
+     ```c++
+     void ResetT(Tree T) { // 清除 T 中各个结点的 flag 标记
+         if(T->left) ResetT(T->left);
+         if(T->right) ResetT(T->right);
+         T->flag = 0;
+     }
+     
+     void FreeTree(Tree T) { // 释放 T 的空间
+         if(T->left) FreeTree(T->left);
+         if(T->right) FreeTree(T->right);
+         free(T);
+     }
+     ```
