@@ -1549,9 +1549,9 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
    遍历过程：
 
-             1. 中序遍历其左子树
-             2. 访问根结点
-            3. 中序遍历其右子树
+   1. 中序遍历其左子树
+   2. 访问根结点
+   3. 中序遍历其右子树
 
    ```c++
    void InOrderTraversal(BinTree BT) {
@@ -1567,9 +1567,9 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
    遍历过程：
 
-          1. 后序遍历其左子树
-                   2. 后序遍历其右子树
-                3. 访问根结点
+   1. 后序遍历其左子树
+   2. 后序遍历其右子树
+   3. 访问根结点
 
    ```c++
    void PostOrderTraversal(BinTree BT) {
