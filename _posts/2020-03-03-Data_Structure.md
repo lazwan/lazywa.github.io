@@ -1916,7 +1916,7 @@ BinTree Delete (ElementType X, BinTree BST) {
 
 其中 h_L 和 h_R 分别为 T 的左、右子树的高度
 
-**平衡二叉树(Balanced Binary Tree) (AVL树)**：空树，或者任一结点左、右子树高度差的绝对值不超过 1，即|BF(T)| <= 1
+**平衡二叉树(Balanced Binary Tree) (AVL树)**：空树，或者任一结点左、右子树高度差的绝对值不超过 1，即 `|BF(T)| <= 1`
 
 **平衡二叉树的调整**
 
