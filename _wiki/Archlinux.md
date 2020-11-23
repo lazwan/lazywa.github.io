@@ -28,21 +28,21 @@ keywords: Linux config
 ```shell
 # 安装 oh-my-zsh
 sudo pacman -S zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # 设置为默认终端
 chsh -s /bin/zsh `whoami`
 chsh -s /bin/zsh root
 
 # 安装 zsh-autosuggestions
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 # 安装 zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # 配置 .zshrc
 ZSH_THEME="ys" # 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo wd z) # 插件
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo) # 插件
 
 source .zshrc
 ```
@@ -63,8 +63,8 @@ git config --global user.email 1065423410@qq.com
 - Git http 代理
 
   ```shell
-  git config --global http.proxy socks5://192.168.0.254:1080
-  git config --global https.proxy socks5://192.168.0.254:1080
+  git config --global http.proxy http://127.0.0.1:7890
+  git config --global https.proxy https://127.0.0.1:7890
   ```
 
 - Git SSH 代理
@@ -75,8 +75,8 @@ git config --global user.email 1065423410@qq.com
   Host github.com
       HostName github.com
       User git
-      # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=1080
-      # ProxyCommand nc -v -x 192.168.0.254:1080 %h %p
+      # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=7890
+      # ProxyCommand nc -v -x 127.0.0.1:7890 %h %p
   ```
 
   使用 HTTP 代理取消倒数第二行注释，安装 socat; 使用 SOCKS5 代理取消最后一行注释，安装 netcat。
@@ -114,7 +114,7 @@ git config --global user.email 1065423410@qq.com
     Categories=Application
     ```
 
-    ![image](/images/wiki/Clashy.png)
+    ![image](../images/wiki/Clashy.png)
 
 ### 配置输入法
 
@@ -184,6 +184,18 @@ git config --global user.email 1065423410@qq.com
   https://pypi.tuna.tsinghua.edu.cn/simple/
   # 华中科技大学
   http://pypi.hustunique.com/
+  ```
+  ```shell
+  pip3 install pqi
+
+  pqi ls
+  pypi 	 https://pypi.python.org/simple/
+  tuna 	 https://pypi.tuna.tsinghua.edu.cn/simple
+  douban 	 http://pypi.douban.com/simple/
+  aliyun 	 https://mirrors.aliyun.com/pypi/simple/
+  ustc 	 https://mirrors.ustc.edu.cn/pypi/web/simple
+
+  pqi use <name> # <name> 为以上显示源的名称，建议使用 ustc 或 douban
   ```
 
 
