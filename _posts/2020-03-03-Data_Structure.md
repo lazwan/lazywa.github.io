@@ -2099,3 +2099,459 @@ BinTree Delete (ElementType X, BinTree BST) {
          free(T);
      }
      ```
+
+#### 3.10、堆
+- 优先队列 (Priority Queue)：特殊的**队列**，取出元素的顺序是依照元素的**优先权(关键字)大小**，而不是元素进入队列的先后顺序
+
+  **若采用数组或链表实现优先队列**
+
+  1. 数组：
+     - 插入：元素总是插入尾部 ( O(1) )
+     - 删除：查找最大(或最小)关键字 + 从数组中删去需要移动元素 (O(n) + O(n))
+
+  2. 链表：
+     - 插入：元素总插汝链表的头部 ( O(1) )
+     - 删除：查找最大(或最小)关键字 + 删去结点 (O(n) + O(1))
+
+  3. 有序数组：
+     - 插入：找到合适的位置 + 移动元素并插入 ((O(n) 或 O(log2(n) ) + O(n))
+     - 删除：删去最后一个元素(O(1))
+
+  4. 有序链表：
+     - 插入：找到合适的位置 + 插入元素(O(n) + O(1))
+     - 删除：删除首元素或者最后元素(O(1))
+
+  **是否可以采用二叉树存储结构？**
+
+   优先队列的**完全二叉树**表示
+
+  ![image-20201120202502027](/images/blog/tree/image-20201120202502027.png)
+
+- 堆的两个特性
+  1. 结构性：用数组表示的完全二叉树
+  2. 有序性：任一结点的很关键字是其子树所有结点的最大值(或最小值)
+     - "最大堆(MaxHeap)"，也称"大顶堆"：最大值
+     - "最小堆(MinHeap)"，也称"小顶堆"：最小值
+
+- 堆的抽象数据类型描述
+  - 堆的名称：最大堆(MaxHeap)
+  - 数据对象集：完全二叉树，每个结点的元素值不小于其子结点的元素值
+  - 操作集：最大堆`H ∈ MaxHeap`，元素 `item ∈ ElementType`，主要操作有：
+    - `MaxHeap Create(int MaxSElements)`：创建一个空的最大堆
+    - `Boolean IsFull(MaxHeap H)`：判断最大堆 H 是否已满
+    - `void Insert(MaxHeap H, ElementTpye item)`：将元素 item 插入最大堆 H
+    - `Boolean IsEmpty(MaxHeap H)`：判断最大堆 H 是否为空
+    - `ElementType DeleteMax(MaxHeap H)`：返回 H 中最大元素(高优先级)
+
+- 最大堆的操作
+  - 最大堆的创建
+    
+    ```c++
+    typedef struct HeapStruct *MaxHeap;
+    struct HeapStruct {
+        ElementType *Elements; // 存储堆元素的数组
+        int size; // 堆的当前元素个数
+        int capacity; // 堆的最大容量
+    };
+    typedef Heap MaxHeap; // 最大堆
+    typedef Heap MinHeap; // 最小堆
+    
+    #define MaxData 1000  // 该值应根据具体情况定义为大于堆中所有可能元素的值
+    MaxHeap Create(int MaxSize) { // 创建容量为 MaxSsize 的最大堆
+        MaxHeap H = malloc(sizeof(struct HeapStruct));
+        H->Elements = malloc((MaxSize + 1) * sizeof(ElementType));
+        H->size = 0;
+        H->capacity = MaxSize;
+        H->Elements[0] = MaxData;
+        // 定义"哨兵"为大于对堆中所有可能元素的值，便于以后更快操作
+        return H;
+    }
+    ```
+  
+  - 最大堆的插入
+
+    将新增结点插入到从父结点到根结点的有序序列中
+  
+    ```c++
+    bool IsFull(MaxHeap H) {
+        return (H->size == H->capacity);
+    }
+    
+    void Insert(MaxHeap H, ElementTpye item) {
+        // 将元素 item 插入最大堆 H，其中 H->Elements[0] 已经定义为哨兵
+        if(IsFull(H)) {
+            cout << "最大堆已满" << endl;
+            return;
+        }
+        int i = ++H->ssize;
+        for ( ; H->Elements[i/2] < item; i /= 2) {
+            H->Elements[i] = H->Elements[i/2];
+        }
+        H->Elements[i] = item;
+    }
+    ```
+  
+  $$
+  T(N)=O(logN)
+  $$
+  
+  - 最大堆的删除
+  
+    取出根结点(最大值)元素，同时删除堆的一个结点
+
+    ```c++
+    bool IsEmpty(MaxHeap H) {
+          return (H->size == 0);
+    }
+      
+    ElementType DeleteMax(MAxHeap H) {
+        // 从最大堆 H 中取出键值为最大的元素，并删除一个结点
+        int parent, child;
+        ElementType MaxItem, temp;
+        if(IsEmpty(H)) {
+            cout << "最大堆已为空" << endl;
+            return;
+        }
+        MaxItem = H->Elements[1]; // 取出根结点最大值
+        // 用最大堆中最后一个元素从根结点开始向上过滤下层结点
+        temp = H->Elements[H->size--]; // 最后一个元素
+        for(parent = 1; parent * 2 <= H->size; parent = child) {
+            child = parent * 2;
+            if((child != H->size) && // 判断有无右儿子
+               (H->Elements[child] < H->Elements[child + 1]))
+                child++; // child 指向左右子结点的较大者
+            
+            if(temp >= H->Elements[child])
+                break;
+            else // 移动 temp 元素到下一层
+                H->Elements[parent] = H->Elemnets[child];
+        }
+        H->Elements[parent] = temp;
+        reruen MaxItem;
+    }
+    ```
+  
+  - 最大堆的建立
+  
+    建立最大堆：将已经存在的 N 个元素按最大堆的要求存放在一个以为数组中
+  
+    - 方法一：通过插入操作，将 N 个元素一个个相继插入到一个初始为空的堆中去，其时间代价最大为 `O(NlogN)`
+    - 方法二：在线性时间复杂度下建立最大堆
+      1. 将 N 个元素按输入顺序存入，先满足完全二叉树的结构特性
+      2. 调整各个结点位置，以满足最大堆的有序特性
+  
+    ![image-20201121140323596](/images/blog/tree/image-20201121140323596.png)
+  
+      ```c++
+      void PercDown(MaxHeap H, int p) { 
+          // 下滤：将 H 中以 H->Elements[p] 为根的子堆调整为最大堆
+        int parent, child;
+          ElementType X;
+      
+          X = H->Elements[p]; // 取出根结点存放的值
+          for(parent = p; parent * 2 <= H->size; parent = child) {
+              child = parent * 2;
+              if((child != H->size) && 
+                (H->Elements[child] < H->Elements[child + 1]))
+                  child++;  // child 指向左右子结点的较大者
+      
+              if( X >= H->Elements[child] ) 
+                  break; // 找到了合适位置
+              else  // 下滤 X
+                  H->Elements[parent] = H->Elements[child];
+          }
+          H->Elements[parent] = X;
+      }
+      
+      void BuildMaxHeap(MaxHeap H) {
+          // 调整 H->Elements[] 中的元素，使满足最大堆的有序性
+          // 这里假设所有 H->size 个元素已经存在 H->Elements[] 中
+      
+          int i;
+          // 从最后一个结点的父节点开始，到根结点 1
+          for(i = H->size/2; i > 0; i--)
+              PercDown(H, i);
+      }
+      ```
+
+#### 3.11、哈夫曼树与哈夫曼编码
+
+**什么是哈夫曼树(Huffman Tree)**
+
+【例】将百分制的考试成绩转换为五分制的成绩
+
+```c++
+if(score < 60) grade = 1;
+else if(score < 70) grade = 2;
+else if(score < 80) grade = 3;
+else if(score < 90) grade = 4;
+else grade = 5;
+```
+
+判定树：
+
+![image-20201121152254478](/images/blog/tree/image-20201121152254478.png)
+
+如果考虑学生成绩的分布概率
+
+| 分数段 | 0 - 59 | 60 -69 | 70 - 79 | 80 - 89 | 90 - 100 |
+| ------ | ------ | ------ | ------- | ------- | -------- |
+| 比例   | 0.05   | 0.15   | 0.40    | 0.30    | 0.10     |
+
+查找效率 = `0.05 x 1 + 0.15 x 2 + 0.4 x 3 + 0.3 * 4 + 0.1 * 4 = 3.15`
+
+修改判定树：
+
+![image-20201121152943434](/images/blog/tree/image-20201121152943434.png)
+
+```c++
+if(score < 80) {
+    if(score < 70) {
+        if(score < 60)
+            grade = 1;
+        else
+            grade = 2;
+    } else
+        grade = 3;
+} else if(score < 90)
+    grade = 4;
+else
+    grade = 5;
+```
+
+查找效率 = `0.05 x 3 + 0.15 x 3 + 0.4 x 2 + 0.3 * 2 + 0.1 * 2 = 2.2`
+
+**【问】** 如何根据结点不同的查找频率构造更有效的搜索树？
+
+- 哈夫曼树的定义
+
+  **带权路径长度(WPL)**：设二叉树有 n 个叶子结点，每个叶子结点带有权值W_k，从根结点到每个叶子结点的长度为L_k，则每个叶子结点的带权路径长度之和就是:
+  $$
+  WPL = \sum_{k=1}^{n}W_kl_k
+  $$
+  最优二叉树或**哈夫曼树**：WPL 最小的二叉树
+
+- 哈夫曼树的构造
+
+  每次把**权值最小的两棵**二叉树合并
+
+  ![image-20201122165603401](/images/blog/tree/image-20201122165603401.png)
+
+```c++
+typedef struct TreeNode *HuffmanTree;
+struct TreeNode {
+    int weight;
+    HuffmanTree left, right;
+}
+
+HuffmanTree Huffman(MinHesp H) {
+    // 假设 H->size 个权值已经存在 H->Elements[]->weight 里
+    HuffmanTree T;
+    BuildMinHeap(H); // 将 ->Elements[] 按权值调整为最小堆
+    for (int i = 1; i < H->sizel i++) { // 做 H->size - 1 次合并
+        T = malloc(sizeof(struct TreeNode)); // 建立新节点
+        T->left = DeleteMin(H); // 从最小堆中删除一个结点，作为新 T 的左子结点
+        T->right = DeleteMin(H); // 从最小堆中删除一个结点，作为新 T 的右子节点
+        T->weight = T->left->weight + T->right->weight; // 计算新权值
+        Insert(H, T); // 将新 T 插入最小堆
+    }
+    T = DeleteMin(H);
+    return T;
+}
+```
+
+$$
+整体复杂度O(NlogN)
+$$
+
+- 哈夫曼树的特点
+  1. 没有度为 1 的结点
+  2. n 个叶子节点的哈夫曼树共有 2n - 1 个结点
+  3. 哈夫曼树的任意非叶结点的左右子树交换后任是哈夫曼树
+  4. 对于同一组权值，存在不同构的两棵哈夫曼树，但是他们的 WPL 值是一样的
+     **eg：**对于一组权值 {1， 2， 3，3}，不同构的两棵哈夫曼树
+
+     ![image-20201122163102981](/images/blog/tree/image-20201122163102981.png)
+
+- 哈夫曼编码
+
+  **【问】**给定一段字符串，如何对字符进行编码，可以使得该字符串的编码存储空间少？
+
+  **【例】**假设有一段文本，包含 58 个字符，并由以下 7 个字符构成：`a, e, i, s, t, 空格(sp), 换行(nl)` 。这 7 个字符出现的次数不同。如何对这 7 个字符进行编码，使得总编码空间最少?
+
+  **【分析】**
+
+  1. 用等长 ASCII 编码：58 * 8 = 464 位
+  2. 用等长 3 位编码：58 * 3 = 174 位
+  3. 不等长编码：出现频率高的字符用的编码短些，出现频率低的字符则可以长些
+
+     用二叉树进行编码：保证对象在叶结点上即可
+
+     ![image-20201122164616483](/images/blog/tree/image-20201122164616483.png)
+
+     使用哈夫曼树进行构造可使总编码空间最少
+
+  **eg：**
+
+  | Ci   | a    | e    | i    | s    | t    | sp   | nl   |
+  | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+  | Fi   | 10   | 15   | 12   | 3    | 4    | 13   | 1    |
+
+![image-20201122165119740](/images/blog/tree/image-20201122165119740.png)
+
+#### 3.12、集合
+
+- 集合的表示
+  - 集合运算：**交、并、补、差**，判定一个元素是否属于某一集合
+  - 并查集：集合**并、查**某元素属于什么集合
+  - 并查集问题中集合存储如何实现？
+    1. 可以用树结构表示集合，树的每个结点代表一个集合
+    2. 采用数组存储形式
+
+       数组中每个元素的类型描述为：
+
+       ```c++
+       typedef struct {
+       	ElementType data;
+           int parent;
+       } SetType;
+       ```
+
+       | 下标 | data | parent |
+       | :--: | :--: | :----: |
+       |  0   |  1   |   -1   |
+       |  1   |  2   |   0    |
+       |  2   |  3   |   -1   |
+       |  3   |  4   |   0    |
+       |  4   |  5   |   2    |
+       |  5   |  6   |   -1   |
+       |  6   |  7   |   0    |
+       |  7   |  8   |   2    |
+       |  8   |  9   |   5    |
+       |  9   |  10  |   5    |
+
+  - 集合运算
+
+    1. 查找某个元素所在的集合(用根结点表示)
+
+       ```c++
+       int Find(SetType S[], ElementType X) {
+           // 在数组 S 中查找值为 X 的元素所属的集合
+           // MaxSize 是全局变量，为数组 S 的最大长度
+           int i;
+           for(i = 0; i < MaxSize && S[i].data != X; i++);
+           if(i >= MaxSize) return -1; // 未找到 X，返回 -1
+           for( ; S[i].parent >= 0; i = S[i].parent);
+           return i; // 找到 X 所属集合，返回树根结点在数组 S 中的下标
+       }
+       ```
+
+    2. 集合的并运算
+
+       - 分别找到 X1 和 X2 两个元素所在的集合树的**根结点**
+       - 如果他们不同根，则将其中**一个根结点的父结点指针设置成另一个根结点**的数组下标
+
+       ```c++
+       void Union(SetType S[], ElementType X1, ElementType X2) {
+           int root1 = Find(S, X1);
+           int root2 = Find(S, X2);
+           if(root1 != root2) S[root2].parent = root1;
+       }
+       ```
+
+       为了改善合并以后的查找性能，可以采用小的集合合并到相对大的集合中(修改 Union 含糊)
+       
+       ```c++
+       void Union(SetType S[], int root1, int root2) { 
+           // 这里默认 root1 和 root2 是不同集合的根结点
+           // 保证小集合并入大集合
+           if (S[root2] < S[root1]) { // 如果集合 2 比较大
+               S[root2] += S[root1]; // 集合 1 并入集合 2
+               S[root1] = root2;
+           } else { // 如果集合 1 比较大
+               S[root1] += S[root2]; // 集合 2 并入集合 1
+               S[root2] = root1;
+           }
+       }
+       
+       int Find(SetType S, ElementType X) { 
+           // 默认集合元素全部初始化为 -1
+           if ( S[X] < 0 ) // 找到集合的根
+               return X;
+           else
+               return S[X] = Find(S, S[X]); // 路径压缩
+       }
+       ```
+
+#### 3.13、堆中的路径
+
+题目理解：
+
+将一系列给定数字插入一个初始为空的小顶堆 H[]。随后对任意给定的下标 i，打印从 H[i] 到根结点的路径
+
+**输入样例：**
+
+```
+5 3
+46 23 26 24 10
+5 4 3
+```
+
+**输出样例：**
+
+```
+24 23 10
+46 23 10
+26 10
+```
+
+```c++
+typedef struct HeapStruct *MaxHeap;
+struct HeapStruct {
+    ElementType *Elements; // 存储堆元素的数组
+    int size; // 堆的当前元素个数
+    int capacity; // 堆的最大容量
+};
+typedef Heap MaxHeap; // 最大堆
+typedef Heap MinHeap; // 最小堆
+
+#define MAXN 1001
+#define MINH -10001
+
+int H[MAXN], size;
+
+void Create() {
+    size = 0;
+    H[0] = MINH; // 设置哨兵
+}
+
+void Insert(int X) {
+    // 将 X 插入H
+    int i;
+    for(i = ++size; H[i/2] > X; i /= 2)
+        H[i] = H[i/2];
+    H[i] = X;
+}
+
+int main() {
+    int n, m, x, j;
+    cin >> n >> m;
+    Create(); // 堆初始化
+    for(int i = 0; i < n; i++) {
+        // 逐个插入方式建堆
+        cin >> x; 
+        Insert(x);
+    }
+    for(int i = 0; i < m; i++) {
+        cin >> j;
+        cout << H[j];
+        while(j > 1) {
+            // 沿根方向输出各结点
+            j /= 2;
+            cout << " " << H[j];
+        }
+        cout << "\n";
+    }
+    return 0;
+}
+```
