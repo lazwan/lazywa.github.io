@@ -1,6 +1,6 @@
 ---
 layout: wiki
-title: Archlinux
+title: Linux Config
 categories: Linux
 description: 我的 Linux 配置方法
 keywords: Linux config
@@ -12,22 +12,20 @@ keywords: Linux config
 
 ## 安装常用软件
 
-- **Chrome**: `sudo pacman -S google-chrome`
-- **VSCode**: `sudo pacman -S visual-studio-code-bin`
-- **IntelliJ IDEA**: `sudo pacman -S intellij-idea-community-edition`
-- **PyCharm**: `sudo pacman -S pycharm-community-edition`
-- **Typora**: `sudo pacman -S typora`
-- **网易云音乐**: `sudo pacman -S netease-cloud-music`
-- **Virtualbox**: `sudo pacman -S virtualbox`
-- **optimus-manager**: `sudo pacman -S optimus-manager optimus-manager-qt`
-- **Latte**: `sudo pacman -S latte-dock`
-- **WPS**: `sudo pacman -S wps-office-cn ttf-wps-fonts wps-office-mui-zh-cn`
+- **Chrome**
+- **VSCode**：
+- **IntelliJ IDEA**
+- **PyCharm**
+- **Typora**
+- **网易云音乐**
+- **Qv2ray**
+- **proxychains**
 
 ## 配置终端
 
 ```shell
 # 安装 oh-my-zsh
-sudo pacman -S zsh
+sudo apt install zsh git
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # 设置为默认终端
@@ -44,7 +42,30 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ZSH_THEME="ys" # 
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions sudo) # 插件
 
+# 配置指令别名
+alias gpp="g++ -std=c++11"
+
+alias proxy="export http_proxy=127.0.0.1:7890; export https_proxy=127.0.0.1:7890; curl ipinfo.io;"
+alias unproxy="unset http_proxy; unset https_proxy; curl ipinfo.io;"
+alias pcs="proxychains"
+
 source .zshrc
+```
+
+## Ubuntu 图形界面
+
+### 关闭用户图形界面
+
+```shell
+sudo systemctl set-default multi-user.target
+sudo reboot
+```
+
+### 开启用户图形界面
+
+```shell
+sudo systemctl set-default graphical.target
+sudo reboot
 ```
 
 ## 配置 Git
@@ -85,24 +106,16 @@ git config --global user.email 1065423410@qq.com
 
 - elecrton-ssr
 
-  - 安装方法：
-
-    ```shell
-    sudo pacman -S electron-ssr
-    ```
-
   - 仓库地址: [electron-ssr-backup](https://github.com/qingshuisiyuan/electron-ssr-backup)
 
 - Clashy
 
   - 仓库地址: [Clashy](https://github.com/SpongeNobody/Clashy)
 
-  - 下载 Appimage 包
-
   - desktop 配置文件
 
     ```
-    #!/usr/bin/env xdg-open
+  #!/usr/bin/env xdg-open
     [Desktop Entry]
     Version=1.0
     Type=Application
@@ -113,25 +126,13 @@ git config --global user.email 1065423410@qq.com
     Terminal=false
     Categories=Application
     ```
-
-    ![image](../images/wiki/Clashy.png)
-
-### 配置输入法
-
-- Fcitx
-
-  ```shell
-  sudo pacman -S fcitx fcitx-im kcm-fcitx fcitx-googlepinyin fcitx-sunpinyin
   
-  vim ~/.xprofile
-  
-  # 编辑 .xprofile 添加以下内容
-  export GTK_IM_MODULE=fcitx
-  export QT_IM_MODULE=fcitx
-  export XMODIFIERS="@im=fcitx"
-  
-  # 重新登出登录后即可生效
-  ```
+    [Clashy.png](https://github.com/ZhWing/zhwing.github.io/blob/master/images/wiki/Clashy.png)
+
+- Qv2ray
+
+  - 仓库地址：[Qv2ray](https://github.com/Qv2ray/Qv2ray)
+  - v2ray-core：[v2ray-core](https://github.com/v2ray/v2ray-core)
 
 ## Anaconda
 
@@ -153,62 +154,64 @@ git config --global user.email 1065423410@qq.com
   channels:
     - defaults
   show_channel_urls: true
+  channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda
   default_channels:
     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+    - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
+    - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
   custom_channels:
     conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
     pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+    simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   ```
   
 - pip 源
 
-  ```shell
-  vim ~/.pip/pip.conf
+  - 手动配置(`vim ~/.pip/pip.conf`)
   
-  # 豆瓣
-  [global]
-  index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-  [install]
-  trusted-host = https://pypi.tuna.tsinghua.edu.cn
-  # 中国科学技术大学
-  https://pypi.mirrors.ustc.edu.cn/simple/
-  # 阿里云
-  http://mirrors.aliyun.com/pypi/simple/
-  # 清华大学
-  https://pypi.tuna.tsinghua.edu.cn/simple/
-  # 华中科技大学
-  http://pypi.hustunique.com/
-  ```
-  ```shell
-  pip3 install pqi
-
-  pqi ls
-  pypi 	 https://pypi.python.org/simple/
-  tuna 	 https://pypi.tuna.tsinghua.edu.cn/simple
-  douban 	 http://pypi.douban.com/simple/
-  aliyun 	 https://mirrors.aliyun.com/pypi/simple/
-  ustc 	 https://mirrors.ustc.edu.cn/pypi/web/simple
-
-  pqi use <name> # <name> 为以上显示源的名称，建议使用 ustc 或 douban
-  ```
-
-
-- [AUR 源](https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/)
-
-  ```shell
-  vim /etc/pacman.conf
+    ```sgell
+    [global]
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+    [install]
+    trusted-host = https://pypi.tuna.tsinghua.edu.cn
+    ```
   
+    >中国科学技术大学：https://pypi.mirrors.ustc.edu.cn/simple/
+    >阿里云：http://mirrors.aliyun.com/pypi/simple/
+    >清华大学：https://pypi.tuna.tsinghua.edu.cn/simple/
+    >华中科技大学：http://pypi.hustunique.com/
+  
+  - 使用 `pqi`换源
+  
+    ubuntu 需要在 `.zshrc`在中添加一个环境变量才能找到 `pqi` 指令 
+  
+    环境变量：`.local/bin`
+
+    ```shell
+    pip3 install pqi
+    ```
+
+
+- [Arch 的 AUR  源](https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/) (`vim /etc/pacman.conf`)
+
+  ```shell
   # 清华大学源
   [archlinuxcn]
   Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+  ```
   
-  # 安装 archlinuxcn-keyring 包导入 GPG key
+  安装 `archlinuxcn-keyring` 包导入 `GPG key`
+  
+  ```shell
   sudo pacman -Syy
   sudo pacman -S archlinuxcn-keyring
   ```
+  
+  
+  
+  
