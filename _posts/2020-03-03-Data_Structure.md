@@ -434,7 +434,7 @@ $$
 - 举例：
 
   - **类型名称：** 矩阵(Matrix)
-  - **数据对象集：** 一个 MxN 的矩阵![image](/img/blog/数据结构/Matrix.png)由MxN个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
+  - **数据对象集：** 一个 MxN 的矩阵![image](/images/DataStructure/Matrix.png)由MxN个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
   - **操作集：** 对于任意矩阵 A、B、C 属于 Matrix，以及整数 i、j、k、M、N
     - Matrix Creat(int M, int N)：返回一个 MxN 的空矩阵;
     - int GetMaxRow(Matrix A)：返回矩阵 A 的总行数;
@@ -557,7 +557,7 @@ $$
 
 - 算法3：分治
 
-  ![image](/img/blog/数据结构/分治.png)
+  ![image](/images/DataStructure/分治.png)
 
   ```c
   static int Find_Max_Crossing_SubArray(int * nums, int start, int mid, int end) {
@@ -650,7 +650,7 @@ $$
 
 **[例]：一元多项式及其计算**
 
-**一元多项式**:![image](/img/blog/数据结构/fx.png)
+**一元多项式**:![image](/images/DataStructure/fx.png)
 
 **主要运算**：多项式相加、相减、相乘等
 
@@ -658,23 +658,23 @@ $$
 
 - 关键数据：
   - 多项式项数 n
-  - 各项系数![image](/img/blog/数据结构/ai.png)及指数 i
+  - 各项系数![image](/images/DataStructure/ai.png)及指数 i
 
 - 表示方法：
 
   - **方法1：顺序存储结构直接表示(虽然方便，但是空间浪费)**
 
-    ![image](/img/blog/数据结构/2.1.1_1.png)
+    ![image](/images/DataStructure/2.1.1_1.png)
 
   - **方法2：顺序储存结构表示非零项**
 
-    ![image](/img/blog/数据结构/2.1.1_2.png)
+    ![image](/images/DataStructure/2.1.1_2.png)
 
-    ![image](/img/blog/数据结构/2.1.1_3.png)
+    ![image](/images/DataStructure/2.1.1_3.png)
 
   - **方法3：链表结构存储非零项**
 
-    ![image](/img/blog/数据结构/2.1.1_4.png)
+    ![image](/images/DataStructure/2.1.1_4.png)
 
 **[启示]：**
 
@@ -705,7 +705,7 @@ $$
 
 利用数组的**连续存储空间顺序存放**线性表的各元素
 
-![image](/img/blog/数据结构/2.1.2_1.png)
+![image](/images/DataStructure/2.1.2_1.png)
 
 注：数组：Data    最后一个元素位置：Last
 
@@ -736,7 +736,7 @@ $$
 
 3. 插入（第 i (1 <= i <= n+1) 个位置上插入一个值为 X 的新元素）
 
-   ![image](/img/blog/数据结构/2.1.2_2.png)
+   ![image](/images/DataStructure/2.1.2_2.png)
 
    ```c
    void Insert (ElementType X, int i, List PtrL) {
@@ -760,7 +760,7 @@ $$
 
 4. 删除（删除表的第 i (1 <= i <= n+1) 个位置上的元素 ）
 
-   ![imag](/img/blog/数据结构/2.1.2_3.png)
+   ![imag](/images/DataStructure/2.1.2_3.png)
 
    ```c
    void Delete (int i, List PtrL) {
@@ -797,7 +797,7 @@ $$
 
 所以，上述二元多项式可以用**“复杂”链表**表示为：
 
-  ![image](/img/blog/数据结构/2.1.3_1.png)
+  ![image](/images/DataStructure/2.1.3_1.png)
 
 **广义表(Generalized List)**
 
@@ -817,7 +817,7 @@ struct GNode [
 ];
 ```
 
-![image](/img/blog/数据结构/2.1.3_2.png)
+![image](/images/DataStructure/2.1.3_2.png)
 
 #### 2.1.4、多重链表
 
@@ -833,7 +833,7 @@ struct GNode [
 1. 一是数组的**大小需要事先确定**;
 2. 对于“稀疏矩阵”，将造成大量的 **存储空间浪费**;
 
-![image](/img/blog/数据结构/2.1.3_3.png)
+![image](/images/DataStructure/2.1.3_3.png)
 
 **「分析」采用一种典型的多重链表——十字链表来存储稀疏矩阵**
 
@@ -846,7 +846,7 @@ struct GNode [
   - 行指针(向  右指针) Right
   - 列指针(向下指针) Down
 
-![image](/img/blog/数据结构/2.1.3_4.png)
+![image](/images/DataStructure/2.1.3_4.png)
 
 - 左上角 Term 结点：稀疏矩阵的入口结点，可以了解到矩阵的有关信息：矩阵有 4 行 5 列，非零项有 7 项;
 
@@ -857,7 +857,7 @@ struct GNode [
 
 头结点的表示为“Head”，矩阵非 0  元素结点的标识值wei“Term”;
 
-![image](/img/blog/数据结构/2.1.3_5.png)
+![image](/images/DataStructure/2.1.3_5.png)
 
 #### 2.2.1、堆栈
 
@@ -913,7 +913,7 @@ $$
 4. int IsEmply (Stack S)：判断堆栈 S 是否为空;
 5. ElementType Pop (Stack S)：删除并返回栈顶元素;
 
-![image](/img/blog/数据结构/2.2.1_1.png)
+![image](/images/DataStructure/2.2.1_1.png)
 
 Push 和 Pop 可以穿插交替进行：
 
@@ -1291,7 +1291,7 @@ typedef struct QNode *Queue;
 Queue PtrQ;
 ```
 
-![image](/img/blog/数据结构/2.3.2_1.png)
+![image](/images/DataStructure/2.3.2_1.png)
 
 **[入队列]**
 
@@ -1333,7 +1333,7 @@ ElementType DeleteQ(Queue PtrQ) {
 
 #### 2.4、多项式的加减运算实现
 
-![image](/img/blog/数据结构/2.4_1.png)
+![image](/images/DataStructure/2.4_1.png)
 
 主要思路：相同指数的项系数相加，其余部分进行拷贝。
 
@@ -1341,7 +1341,7 @@ ElementType DeleteQ(Queue PtrQ) {
 
 采用不带头结点的单向链表，按照指数递减的顺序排列各项。
 
-![image](/img/blog/数据结构/2.4_2.png)
+![image](/images/DataStructure/2.4_2.png)
 
 ```c
 struct PloyNode {
@@ -1500,7 +1500,7 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
   **完全二叉树**：按从上到下、从左到右顺序存储 n 个结点的完全二叉树的结点父子关系:
 
-  ![image-20201109165349888](/img/blog/tree/image-20201109165349888.png)
+  ![image-20201109165349888](/images/tree/image-20201109165349888.png)
 
   | 结点 |  A   |  B   |  O   |  C   |  S   |  M   |  Q   |  W   |  K   |
   | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
@@ -1512,7 +1512,7 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
   **一般二叉树**也可以采用这种结构，但是会造成空间浪费
 
-  ![image-20201109170742034](/img/blog/tree/image-20201109170742034.png)
+  ![image-20201109170742034](/images/tree/image-20201109170742034.png)
 
 - 链表存储
 
@@ -1526,7 +1526,7 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
   };
   ```
 
-  ![image-20201109171327944](/img/blog/tree/image-20201109171327944.png)
+  ![image-20201109171327944](/images/tree/image-20201109171327944.png)
 
 #### 3.7、二叉树的遍历
 
@@ -1647,7 +1647,7 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
   3. **【例】** 二元运算表达式树及其遍历
 
-     ![image-20201110181430313](/img/blog/tree/image-20201110181430313.png)
+     ![image-20201110181430313](/images/tree/image-20201110181430313.png)
 
      三种遍历可以得到三种不同的访问结果：
 
@@ -1700,7 +1700,7 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
      结构数组表示二叉树：静态链表
 
-     ![image-20201111160708909](/img/blog/tree/image-20201111160708909.png)
+     ![image-20201111160708909](/images/tree/image-20201111160708909.png)
 
      | 存储内容 | A    | B    | C    | D    |
      | -------- | ---- | ---- | ---- | ---- |
@@ -1914,7 +1914,7 @@ BinTree Delete (ElementType X, BinTree BST) {
 
 **【例】** 搜索树结点不同插入次序，将导致不同的深度和平均查找长度 ASL
 
-![image-20201115141353096](/img/blog/tree/image-20201115141353096.png)
+![image-20201115141353096](/images/tree/image-20201115141353096.png)
 
 **平衡因子 **(Balance Factor, 简称 BF)：**BF(T) = h_L - h_R**
 
@@ -1926,19 +1926,19 @@ BinTree Delete (ElementType X, BinTree BST) {
 
 “麻烦结点” 在不平衡的“发现者”右子树的右子树：RR 插入，需要 RR 旋转(右单旋)
 
-![image-20201115170804281](/img/blog/tree/image-20201115170804281.png)
+![image-20201115170804281](/images/tree/image-20201115170804281.png)
 
 “麻烦结点” 在不平衡的“发现者”左子树的左子树：LL 插入，需要 LL 旋转(左单旋)
 
-![image-20201115170903525](/img/blog/tree/image-20201115170903525.png)
+![image-20201115170903525](/images/tree/image-20201115170903525.png)
 
 “麻烦结点” 在不平衡的“发现者”左子树的右子树：LR 插入，需要 LR 旋转
 
-![image-20201115171117839](/img/blog/tree/image-20201115171117839.png)
+![image-20201115171117839](/images/tree/image-20201115171117839.png)
 
 “麻烦结点” 在不平衡的“发现者”右子树的左子树：RL 插入，需要 RL 旋转
 
-![image-20201117151523311](/img/blog/tree/image-20201117151523311.png)
+![image-20201117151523311](/images/tree/image-20201117151523311.png)
 
 
 - **判别是否是同一颗二叉搜索树**
@@ -1979,7 +1979,7 @@ BinTree Delete (ElementType X, BinTree BST) {
 
   2. 不建树的判别方法：递归判断左右子树是否相同
 
-     ![image-20201118160809603](/img/blog/tree/image-20201118160809603.png)
+     ![image-20201118160809603](/images/tree/image-20201118160809603.png)
 
   3. 建一棵树，再判别其他序列是否与该树一致
 
@@ -2129,7 +2129,7 @@ BinTree Delete (ElementType X, BinTree BST) {
 
    优先队列的**完全二叉树**表示
 
-  ![image-20201120202502027](/img/blog/tree/image-20201120202502027.png)
+  ![image-20201120202502027](/images/tree/image-20201120202502027.png)
 
 - 堆的两个特性
   1. 结构性：用数组表示的完全二叉树
@@ -2244,7 +2244,7 @@ BinTree Delete (ElementType X, BinTree BST) {
       1. 将 N 个元素按输入顺序存入，先满足完全二叉树的结构特性
       2. 调整各个结点位置，以满足最大堆的有序特性
   
-    ![image-20201121140323596](/img/blog/tree/image-20201121140323596.png)
+    ![image-20201121140323596](/images/tree/image-20201121140323596.png)
   
       ```c++
       void PercDown(MaxHeap H, int p) { 
@@ -2294,7 +2294,7 @@ else grade = 5;
 
 判定树：
 
-![image-20201121152254478](/img/blog/tree/image-20201121152254478.png)
+![image-20201121152254478](/images/tree/image-20201121152254478.png)
 
 如果考虑学生成绩的分布概率
 
@@ -2306,7 +2306,7 @@ else grade = 5;
 
 修改判定树：
 
-![image-20201121152943434](/img/blog/tree/image-20201121152943434.png)
+![image-20201121152943434](/images/tree/image-20201121152943434.png)
 
 ```c++
 if(score < 80) {
@@ -2339,7 +2339,7 @@ else
 
   每次把**权值最小的两棵**二叉树合并
 
-  ![image-20201122165603401](/img/blog/tree/image-20201122165603401.png)
+  ![image-20201122165603401](/images/tree/image-20201122165603401.png)
 
 ```c++
 typedef struct TreeNode *HuffmanTree;
@@ -2375,7 +2375,7 @@ $$
   4. 对于同一组权值，存在不同构的两棵哈夫曼树，但是他们的 WPL 值是一样的
      **eg：**对于一组权值 {1， 2， 3，3}，不同构的两棵哈夫曼树
 
-     ![image-20201122163102981](/img/blog/tree/image-20201122163102981.png)
+     ![image-20201122163102981](/images/tree/image-20201122163102981.png)
 
 - 哈夫曼编码
 
@@ -2391,7 +2391,7 @@ $$
 
      用二叉树进行编码：保证对象在叶结点上即可
 
-     ![image-20201122164616483](/img/blog/tree/image-20201122164616483.png)
+     ![image-20201122164616483](/images/tree/image-20201122164616483.png)
 
      使用哈夫曼树进行构造可使总编码空间最少
 
@@ -2401,7 +2401,7 @@ $$
   | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
   | Fi   | 10   | 15   | 12   | 3    | 4    | 13   | 1    |
 
-![image-20201122165119740](/img/blog/tree/image-20201122165119740.png)
+![image-20201122165119740](/images/tree/image-20201122165119740.png)
 
 #### 3.12、集合
 
