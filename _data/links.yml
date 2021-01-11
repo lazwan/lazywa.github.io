@@ -1,7 +1,0 @@
-- name: Github
-  url: https://github.com/zhwing
-  src: life
-
-- sitename: Gitpage
-  url: https://zhwing.github.io
-  src: life

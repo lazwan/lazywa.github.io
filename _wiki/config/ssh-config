@@ -1,9 +1,0 @@
-Host github.com
-   # 如果用默认端口，这里是 github.com，如果想用443端口，这里就是 ssh.github.com
-   HostName github.com
-   # Port 443
-   User git
-   # install socat
-   # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=6667
-   # install openbsd-netcat
-   ProxyCommand nc -v -x 192.168.0.253:1080 %h %p

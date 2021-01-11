@@ -1,7 +1,0 @@
-[user]
-	name = ZhW
-	email = 1065423410@qq.com
-[http]
-	proxy = socks5://192.168.0.253:1080
-[https]
-	proxy = socks5://192.168.0.253:1080

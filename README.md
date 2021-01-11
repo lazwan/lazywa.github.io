@@ -1,82 +1,61 @@
-# 码志
+# Kiko Now
 
-我的个人博客：<https://mazhuang.org>，欢迎 Star 和 Fork。
+*Read this in other languages: [English](README.md), [한국어](README.ko.md).*
 
-## 概览
+**Jekyll** is a static site generator that's perfect for GitHub hosted blogs ([Jekyll Repository](https://github.com/jekyll/jekyll))
 
-<!-- vim-markdown-toc GFM -->
+**Kiko Now** is a Jekyll theme based on **[Jekyll Now](https://github.com/barryclark/jekyll-now)**, following the philosophy of **Jekyll Now**, which makes it easier to create your Jekyll blog, by eliminating a lot of the up front setup.
 
-* [效果预览](#效果预览)
-* [Fork 指南](#fork-指南)
-* [贴心提示](#贴心提示)
-* [经验与思考](#经验与思考)
-* [致谢](#致谢)
+![Kiko Now Theme Screenshot](/images/kiko-now-theme-screenshot.png "Kiko Now Theme Screenshot")
 
-<!-- vim-markdown-toc -->
+## Quick Start
 
-## 效果预览
+### Step 1) Fork Jekyll Now to your User Repository
 
-**[在线预览 &rarr;](https://mazhuang.org)**
+Fork this repo, then rename the repository to yourgithubusername.github.io.
 
-![screenshot home](https://mazhuang.org/assets/images/screenshots/home.png)
+Your Jekyll blog will often be viewable immediately at <https://yourgithubusername.github.io> (if it's not, you can often force it to build by completing step 2)
 
-## Fork 指南
+### Step 2) Customize and view your site
 
-Fork 本项目之后，还需要做一些事情才能让你的页面「正确」跑起来。
+Enter your site name, description, avatar and many other options by editing the _config.yml file. You can easily turn on Google Analytics tracking, Disqus commenting and social icons here too.
 
-1. 正确设置项目名称与分支。
+Making a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with jekyll. Your rebuilt site will be viewable a few seconds later at <https://yourgithubusername.github.io> - if not, give it ten minutes as GitHub suggests and it'll appear soon
 
-   按照 GitHub Pages 的规定，名称为 `username.github.io` 的项目的 master 分支，或者其它名称的项目的 gh-pages 分支可以自动生成 GitHub Pages 页面。
+There are 3 different ways that you can make changes to your blog's files:
 
-2. 修改域名。
+1. Edit files within your new username.github.io repository in the browser at GitHub.com (shown below).
+2. Use a third party GitHub content editor, like [Prose by Development Seed](http://prose.io). It's optimized for use with Jekyll making markdown editing, writing drafts, and uploading images really easy.
+3. Clone down your repository and make updates locally, then push them to your GitHub repository.
 
-   如果你需要绑定自己的域名，那么修改 CNAME 文件的内容；如果不需要绑定自己的域名，那么删掉 CNAME 文件。
+![_config.yml](/images/config.png "_config.yml")
 
-3. 修改配置。
+### Step 3) Publish your first blog post
 
-   网站的配置基本都集中在 \_config.yml 文件中，将其中与个人信息相关的部分替换成你自己的，比如网站的 url、title、subtitle 和第三方评论模块的配置等。
+Edit `/_posts/2017-10-08-hello-world.md` to publish your first blog post. This [Markdown Cheatsheet](http://www.jekyllnow.com/Markdown-Style-Guide/) might come in handy.
 
-   **评论模块：** 目前支持 disqus、gitment 和 gitalk，选用其中一种就可以了，推荐使用 gitalk。它们各自的配置指南链接在 \_config.yml 文件的 Comments 一节里都贴出来了。
+![First Post](/images/post-screenshot.png "First Post")
 
-   **注意：** 如果使用 disqus，因为 disqus 处理用户名与域名白名单的策略存在缺陷，请一定将 disqus.username 修改成你自己的，否则请将该字段留空。我对该缺陷的记录见 [Issues#2][3]。
+You can add additional posts in the browser on GitHub.com too! Just hit the + icon in `/_posts/` to create new content. Just make sure to include the [front-matter](http://jekyllrb.com/docs/frontmatter/) block at the top of each new blog post and make sure the post's filename is in this format: year-month-day-title.md
 
-4. 删除我的文章与图片。
+#### Frontmatter
+```
+---
+layout: post
+title: "post title"
+tags: [tag1, tag2, tag3]
+comments: true
+---
+```
 
-   如下文件夹中除了 template.md 文件外，都可以全部删除，然后添加你自己的内容。
+## Local Development
 
-   * \_posts 文件夹中是我已发布的博客文章。
-   * \_drafts 文件夹中是我尚未发布的博客文章。
-   * \_wiki 文件夹中是我已发布的 wiki 页面。
-   * images 文件夹中是我的文章和页面里使用的图片。
+1. Install Jekyll and plug-ins in one fell swoop. `gem install github-pages` This mirrors the plug-ins used by GitHub Pages on your local machine including Jekyll, Sass, etc.
+2. Clone down your fork `git clone https://github.com/yourusername/yourusername.github.io.git`
+3. Serve the site and watch for markup/sass changes `jekyll serve`
+4. View your website at http://127.0.0.1:4000/
+5. Commit any changes and push everything to the master branch of your GitHub user repository. GitHub Pages will then rebuild and serve your website.
 
-5. 修改「关于」页面。
+## Questions?
 
-   pages/about.md 文件内容对应网站的「关于」页面，里面的内容多为个人相关，将它们替换成你自己的信息，包括 \_data 目录下的 skills.yml 和 social.yml 文件里的数据。
-
-## 贴心提示
-
-1. 排版建议遵照一定的规范，推荐 [中文文案排版指北（简体中文版）][1]。
-
-2. 在本地预览博客效果可以参考 [Setting up your Pages site locally with Jekyll][2]。
-
-## 经验与思考
-
-* 简约，尽量每个页面都不展示多余的内容。
-
-* 有时一图抵千言，有时可能只会拖慢网页加载速度。
-
-* 言之有物，不做无痛之呻吟。
-
-* 如果写技术文章，那先将技术原理完全理清了再开始写，一边摸索技术一边组织文章效率较低。
-
-* 杜绝难断句、难理解的长句子，如果不能将其拆分成几个简洁的短句，说明脑中的理解并不清晰。
-
-* 可以学习一下那些高质量的博主，他们的行文，内容组织方式，有什么值得借鉴的地方。
-
-## 致谢
-
-本博客外观基于 [DONGChuan](https://dongchuan.github.io) 修改，感谢！
-
-[1]: https://github.com/mzlogin/chinese-copywriting-guidelines
-[2]: https://help.github.com/articles/setting-up-your-pages-site-locally-with-jekyll/
-[3]: https://github.com/mzlogin/mzlogin.github.io/issues/2
+[Open an Issue](https://github.com/aweekj/kiko-now/issues/new) and let's chat!

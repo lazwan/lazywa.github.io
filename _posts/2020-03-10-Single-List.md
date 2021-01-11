@@ -1,9 +1,13 @@
 ---
 layout: post
-title: 『单链表实现』
-categories: Code
-description: 单链表的简单实现
-keywords: Code, Single List
+title: 单链表实现
+categories: 单链表实现
+author: ZhW
+header-style: text
+mathjax: true
+tags: 
+    - 数据结构
+    - Code
 ---
 实现了一些基本的插入、查找、删除和合并功能。
 

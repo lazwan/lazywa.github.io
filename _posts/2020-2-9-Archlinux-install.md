@@ -1,9 +1,13 @@
 ---
 layout: post
-title: 『Archlinux 安装手册』
-categories: Blog
-description: 安装 Archlinux
-keywords: Linux, Note
+title: Archlinux 安装手册
+categories: Archlinux 安装手册
+author: ZhW
+header-style: text
+tags: 
+    - Linux
+    - Archlinux
+    - wiki
 ---
 
 最近没啥事，装一下 Archlinux。
@@ -215,10 +219,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 我的 Archlinux 桌面配置：
 
-![shell](/images/blog/Archlinux-install/shell.png)
+![shell](/img/blog/Archlinux-install/shell.png)
 
-![desktop](/images/blog/Archlinux-install/Archlinux-desktop.png)
-![theme](/images/blog/Archlinux-install/theme.png)
+![desktop](/img/blog/Archlinux-install/Archlinux-desktop.png)
+![theme](/img/blog/Archlinux-install/theme.png)
 
-![windows](/images/blog/Archlinux-install/windows.png)
-![icons](/images/blog/Archlinux-install/icons.png)
+![windows](/img/blog/Archlinux-install/windows.png)
+![icons](/img/blog/Archlinux-install/icons.png)
