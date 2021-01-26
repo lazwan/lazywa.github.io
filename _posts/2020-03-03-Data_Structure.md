@@ -23,8 +23,7 @@ tags:
 ```c
 # include<stdio.h>
 
-int main()
-{
+int main() {
     int x, *p;
     x = 55;
     p = &x;
@@ -41,12 +40,12 @@ int main()
 **[五种算数运算]**
 
 ```c
-p1 ++; // 含义指向 a 后的整型单元
-p1 --; // 指向 a 前的整型单元
-p1 + n; // 指向 a 后的 n 个整型单元
-p1 - n; // 指向 a 前的 n 个整型单元
+p1++;    // 含义指向 a 后的整型单元
+p1--;    // 指向 a 前的整型单元
+p1 + n;  // 指向 a 后的 n 个整型单元
+p1 - n;  // 指向 a 前的 n 个整型单元
 p2 - p1; // a 和 b 之间差的单元数
-p ± n; // p 的实际内容 ±n sizeof(*p);
+p ± n;   // p 的实际内容 ±n sizeof(*p);
 ```
 
 **[指针与数组]**
@@ -56,7 +55,7 @@ p ± n; // p 的实际内容 ±n sizeof(*p);
 通过指针引用数组元素可以分以下三个步骤：
 
 1. 说明指针和数组：`int *p, a[10]`
-2. 指针指向数组：`p = a; p = &a[0];`(指向数组的首地址)
+2. 指针指向数组：`p = a; p = &a[0]; `(指向数组的首地址)
 3. 过指针引用数组元素：当指针指向数组的首地址时，则下标为 i 的元素地址为`p + i` 或 `a + i`
 
 **[引用数组元素可以有三种方法]**
@@ -65,7 +64,7 @@ p ± n; // p 的实际内容 ±n sizeof(*p);
 2. 指针法：`*(p+i)`
 3. 数组名法：`*(a+i)`
 
-「 注」数组名是常量地址，不能改变！~~a = p~~
+[ 注]数组名是常量地址，不能改变！~~a = p~~
 
 **[C语言的动态分配函数(stdlib.h) ]**
 
@@ -75,11 +74,10 @@ p ± n; // p 的实际内容 ±n sizeof(*p);
 
 **[C++的动态存储分配]**
 
-1. new  类型名 T (初值列表)
-
-   - 功能：申请用于存放T类型对象的内存空间，并依初值列表赋以初值
-   - 结果值：
-     - 成功：T类型的指针，指向新分配的内存
+1. new 类型名 T (初值列表)
+   功能：申请用于存放 T 类型对象的内存空间，并依初值列表赋以初值
+   结果值：
+     - 成功：T 类型的指针，指向新分配的内存
      - 失败：0 (NULL)
 
    ```c++
@@ -90,8 +88,7 @@ p ± n; // p 的实际内容 ±n sizeof(*p);
    ```
 
 2. delete 指针 P
-
-   - 功能：释放指针P所指向的内存。P必须是new操作的返回值
+   功能：释放指针 P 所指向的内存。P 必须是 new 操作的返回值
 
    ```c++
    int *p1 = new int[10];
@@ -108,22 +105,20 @@ p ± n; // p 的实际内容 ±n sizeof(*p);
 1. 传值方式：参数为整型、实型、字符型等
 2. 传地址：参数为指针变量、引用类型、数组名
 
-**「传值方式」** 把实参的值传送给函数局部工作区相应的副本中，函数使用这个副本执行必要的功能。函数修改的是副本的值，实参的值不变
+**[传值方式]** 把实参的值传送给函数局部工作区相应的副本中，函数使用这个副本执行必要的功能。函数修改的是副本的值，实参的值不变
 
 ```c++
 # include<iostream>
 using namespace std;
 
-void swap (float m, float n)
-{
+void swap (float m, float n) {
     float temp;
     temp = m;
     m = n;
     n = temp;
 }
 
-int main()
-{
+int main() {
     float a, b;
     cin >> a >> b; // 1 2
     swap(a, b);
@@ -132,22 +127,20 @@ int main()
 }
 ```
 
-**「传地址方式」** 指针变量作参数：形参变化影响实参
+**[传地址方式]** 指针变量作参数：形参变化影响实参
 
 ```c++
 # include<iostream>
 using namespace std;
 
-void swap (float *m, float *n)
-{
+void swap (float *m, float *n) {
     float temp;
     temp = *m;
     *m = *n;
     *n = temp;
 }
 
-int main()
-{
+int main() {
     float a, b;
     float *p1, *p2;
     cin >> a >> b; // 1 2
@@ -158,14 +151,13 @@ int main()
 }
 ```
 
-**「传地址方式」** 引用类型作参数：
+**[传地址方式]** 引用类型作参数：
 
 ```c++
 # include<iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     int i = 5;
     int& j = i; // j 是一个引用类型，代表 i 的一个替代名
     i = 7; // i值改变时，j 值也跟着改变
@@ -178,16 +170,14 @@ int main()
 # include<iostream>
 using namespace std;
 
-void swap(float& m,float& n)
-{
+void swap(float& m,float& n) {
     float temp;
-    temp=m;
-    m=n;
-    n=temp;
+    temp = m;
+    m = n;
+    n = temp;
 }
 
-int main()
-{
+int main() {
     float a, b;
     cin >> a >> b; // 1 2
     swap(a, b);
@@ -195,11 +185,11 @@ int main()
 }
 ```
 
-**「引用类型作形参的三点说明」**
+**[引用类型作形参的三点说明]**
 
 1. 传递引用给函数与传递指针的效果是一样的，形参变化实参也发生变化
 2. 引用类型作形参，在内存中并没有产生实参的副本，它 直接对实参操作；而一般变量作参数，形参与实参就占用不同的存储单元，所以形参变量的值是实参变量的副本。因此，当参数传递的数据量较大时，用引用比用一般变量传递参数的时间和空间效率都好
-3. 指针参数虽然也能达到与使用引用的效果，但在被调函数中需要重复使用 `*` 指针变量名”的形式进行运算，这很容易产生错误且程序的阅读性较差；另一方面，在主调函数的调用点处，必须用变量的地址作为实参
+3. 指针参数虽然也能达到与使用引用的效果，但在被调函数中需要重复使用 `*` 指针变量名的形式进行运算，这很容易产生错误且程序的阅读性较差；另一方面，在主调函数的调用点处，必须用变量的地址作为实参
 
 **[传地址方式]** 数组名作参数：传递的是数组的首地址，对形参数组所做的任何改变都将反映到实参数组中
 
@@ -209,21 +199,19 @@ using namespace std;
 
 void sub(char a[]);
 
-int main()
-{
+int main() {
     char a[10] = "hello";
     sub(a);
     cout << a << endl;
     return 0;
 }
 
-void sub(char b[])
-{
+void sub(char b[]) {
     b[] = "world";
 }
 ```
 
-**「问」** 用数组作函数的参数，求10个整数的最大数
+**[问]** 用数组作函数的参数，求 10 个整数的最大数
 
 ```c++
 # include<iostream>
@@ -232,8 +220,7 @@ using namespace std;
 
 int max(int a[]);
 
-int main()
-{
+int main() {
     int a[10];
     int m;
     for (int i = 0; i < N; i++) {
@@ -252,7 +239,7 @@ int max(int b[]) {
 }
 ```
 
-**「练习」** 用数组作为函数的参数，将数组中 n 个整数按相反的顺序存放，要求输入和输出在主函数中完成
+**[练习]** 用数组作为函数的参数，将数组中 n 个整数按相反的顺序存放，要求输入和输出在主函数中完成
 
 ```c++
 # include<iostream>
@@ -269,10 +256,9 @@ void sub(int b[]) {
     }
     return;
 }
-int main()
-{
+int main() {
     int a[10];
-       for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
     sub(a);
@@ -290,10 +276,10 @@ int main()
 
 ```c
 struct 结构体名 { // struct：结构标志
-    type 成员 1;
-    type 成员 2;
+    type 成员1;
+    type 成员2;
     ...
-    type 成员 n; // 结构类型中所含的成员项及其类型
+    type 成员n; // 结构类型中所含的成员项及其类型
 };
 ```
 
@@ -338,30 +324,28 @@ typedef struct LNode {
 
 写一个程序实现一个函数 PrintN，似地传入一个正整数为 N 的参数后，能顺序打印从 1 到 N 全部正整数。
 
-- **循环实现( 占用空间小)**
+**循环实现( 占用空间小)**
 
-  ```C
-  void PrintN(int n)
-  {
-      fro (int i =1; i <= n; i++) {
-          cout << i << ' ';
-      }
-      return 0;
-  }
-  ```
+```c
+void PrintN(int n) {
+    fro (int i =1; i <= n; i++) {
+        cout << i << ' ';
+    }
+    return 0;
+}
+```
 
-- **递归实现(占用空间大)**
+**递归实现(占用空间大)**
 
-  ```C
-  void PrintN(int n)
-  {
-      if (n){
-          Print(n - 1);
-          cout << n << ' ';
-      }
-      return 0;
-  }
-  ```
+```c
+void PrintN(int n) {
+    if (n) {
+        PrintN(n - 1);
+        cout << n << ' ';
+    }
+    return 0;
+}
+```
 
 #### 1.1.2、关于算法效率
 
@@ -370,52 +354,52 @@ $$
 f(x) =a_0 + a_1x + ... + a_{n-1}x^{n-1} + a_nx^n
 $$
 
-- **一般算法(效率低)**
+**一般算法(效率低)**
 
-  ```C
-  double f(int n, double a[], double x) {
-      double p = a[0];
-      for (int i = 1; i <= n; i++) {
-          p += (a[i] * pow(x, i));
-      }
-      return p;
-  }
-  ```
+```c
+double f(int n, double a[], double x) {
+    double p = a[0];
+    for (int i = 1; i <= n; i++) {
+        p += (a[i] * pow(x, i));
+    }
+    return p;
+}
+```
 
-- **秦九韶算法(效率高)**
-  $$
-  f(x) = a_0 + x(a_1 + x(...(a_{n-1} + x(a_n))...))
-  $$
+**秦九韶算法(效率高)**
+$$
+f(x) = a_0 + x(a_1 + x(...(a_{n-1} + x(a_n))...))
+$$
 
-  ```C
-  double f (int n, double a[], double x) {
-      double p = a[n];
-      for (int i = n; i > 0; i--) {
-          p = a[i -1 ] + x * p;
-      }
-      return p;
-  }
-  ```
+```c++
+double f (int n, double a[], double x) {
+    double p = a[n];
+    for (int i = n; i > 0; i--) {
+        p = a[i -1 ] + x * p;
+    }
+    return p;
+}
+```
 
-- **clock():** 捕捉从程序开始运行到 clock() 被调用时所耗费的时间。单位是 clock tick，即“时钟打点”
+**clock():** 捕捉从程序开始运行到 `clock()` 被调用时所耗费的时间。单位是 clock tick，即“时钟打点”
 
-  常数 CLK_TCK：机器时钟每秒所走的时钟打点数。
+常数 `CLK_TCK`：机器时钟每秒所走的时钟打点数。
 
-  ```C
-  # include <stdio.h>
-  # include <time.h>
-  
-  clock_t start, stop;
-  double duration;
-  int main()
-  {
-      start = clock();
-      MyFunction();
-      stop = clock();
-      duration = (double(stop - start)) / CLK_TCK;
-      return 0;
-  }
-  ```
+```c++
+# include <stdio.h>
+# include <time.h>
+
+clock_t start, stop;
+double duration;
+int main()
+{
+    start = clock();
+    MyFunction();
+    stop = clock();
+    duration = (double(stop - start)) / CLK_TCK;
+    return 0;
+}
+```
 
 #### 1.1.3、抽象数据类型
 
@@ -434,13 +418,13 @@ $$
 - 举例：
 
   - **类型名称：** 矩阵(Matrix)
-  - **数据对象集：** 一个 MxN 的矩阵![image](/images/DataStructure/Matrix.png)由MxN个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
+  - **数据对象集：** 一个 M\*N 的矩阵 $A_{M\*N}=(a_{ij})(i=1, 2,...M;j=1...N)$ 由 M\*N 个三元组 <a, i, j> 构成，其中 a 是矩阵元素的值，i 是元素所在的行号，j 是元素所在的列号。
   - **操作集：** 对于任意矩阵 A、B、C 属于 Matrix，以及整数 i、j、k、M、N
-    - Matrix Creat(int M, int N)：返回一个 MxN 的空矩阵;
-    - int GetMaxRow(Matrix A)：返回矩阵 A 的总行数;
-    - ElementType GetEntry(Matrix A, int i, int j): 返回矩阵 A 的第 i 行、第 j 列的元素;
-    - Matrix Add(Matrix A, Matrux B): 如果 A 和 B 的行、列数一致，则返回矩阵 C = A + B，否则返回错误标志;
-    - Matrix Multiply(Matrix A, Matrix B): 如果 A 的列数等于 B 夫人行数，则返回矩阵 C = AB，否则返回错误标志;
+    - `Matrix Creat(int M, int N)`：返回一个 MxN 的空矩阵;
+    - `int GetMaxRow(Matrix A)`：返回矩阵 A 的总行数;
+    - `ElementType GetEntry(Matrix A, int i, int j)`: 返回矩阵 A 的第 i 行、第 j 列的元素;
+    - `Matrix Add(Matrix A, Matrux B)`: 如果 A 和 B 的行、列数一致，则返回矩阵 C = A + B，否则返回错误标志;
+    - `Matrix Multiply(Matrix A, Matrix B)`: 如果 A 的列数等于 B 夫人行数，则返回矩阵 C = AB，否则返回错误标志;
     - ......
 
 #### 1.2.1、算法(Algorithm)
@@ -456,7 +440,7 @@ $$
 
 **举例：选择排序算法的伪代码描述**
 
-```C
+```c
 void SelectionSort(int List[], int N) {
     /*将 N 个List[0]...List[N-1] 进行非递减排序*/
     for(i = 0; i < N; i++) {
@@ -473,7 +457,7 @@ void SelectionSort(int List[], int N) {
 
 举例1：
 
-```C
+```c
 void PrintN(int N) {
     if(N) {
         Print(N - 1);
@@ -484,7 +468,7 @@ void PrintN(int N) {
 
 举例2：
 
-```C
+```c
 double f(int n, double a[], double x) {
     double p = a[0];
     for (int i = 1; i <= n; i++) {
@@ -505,13 +489,13 @@ double f (int n, double a[], double x) {
 #### 1.2.1、应用实例
 
 **最大子列和问题：**
-$$
-给定 N 个着呢个书的序列 {A1, A2, ..., An}，求函数f(i, j)=max(0, \sum_{k=i}^jA_k)的最大值：
-$$
+
+给定 N 个整数的序列{A1, A2, ..., An\}，求函数 $f(i, j)=max(0, \sum_{k=i}^jA_k)$ 的最大值：
+
 
 - 算法1：
 
-  ```C
+  ```c
   int MaxSubseqSum(int A[], int N) {
       int ThisSum, MaxSum = 0;
       int i, j, k;
@@ -590,10 +574,9 @@ $$
       int cross;
       int mid;
   
-      if(start == end)
-          return * nums;
-      else
-      {
+      if(start == end) {
+        return * nums;
+      } else {
           mid = (start + end)/2;
           left = Find_Maximum_Subarray(nums, start, mid);
           right = Find_Maximum_Subarray(nums, mid + 1, end);
@@ -608,8 +591,7 @@ $$
       }
   }
   
-  int main()
-  {
+  int main() {
       int arr[] = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}, * nums = arr;
       int val;
   
@@ -625,7 +607,7 @@ $$
 
 - 算法4：在线处理
 
-  ```C
+  ```c
   int MaxSubSum(int A[], int N) {
       int ThisSum, MaxSum, i;
       ThisSum = MaxSum = 0;
@@ -650,15 +632,16 @@ $$
 
 **[例]：一元多项式及其计算**
 
-**一元多项式**:![image](/images/DataStructure/fx.png)
+**一元多项式**:
+$f(x)=a_0+ a_1x+...+ a_{n-1}x^{n-1}+ a_nx^n$
 
 **主要运算**：多项式相加、相减、相乘等
 
 **[分析]：如何表示多项式**
 
 - 关键数据：
-  - 多项式项数 n
-  - 各项系数![image](/images/DataStructure/ai.png)及指数 i
+  - 多项式项数 $n$
+  - 各项系数 $a^i$ 及指数 \$i$
 
 - 表示方法：
 
@@ -678,12 +661,12 @@ $$
 
 **[启示]：**
 
-1. 同一个问题可以有不同的表示（存储）方法
+1. 同一个问题可以有不同的表示(存储)方法
 2. 有一类共性问题：有序线性序列的组织和管理
 
 #### 2.1.2、线性表
 
-**“线性表(Linear List)”**：由同类型**数据元素**构成**有序序列**的线性结构
+**线性表(Linear List)**：由同类型**数据元素**构成**有序序列**的线性结构
 
 1. 表中元素个数称为线性表的**长度**
 2. 线性表没有元素时，称为**空表**
@@ -691,15 +674,15 @@ $$
 
 **[线性表的抽象数据类型描述]**
 
-- **类型名称：** 线性表（List）
+- **类型名称：** 线性表(List)
 - **数据对象集：** 线性表是 n(>=0) 个元素构成的有序序列 (a1, a2, ..., an)
 - **操作集：** 线性表 L 属于 List，整数 i 表示位置，元素 X 属于 ElementType，线性表基本操作主要有：
-  1. List MarkEmpty()：初始化一个空线性表 L;
-  2. ElementType FindKth(int K, List L)：根据位序 K，返回相应元素;
-  3. int Find(ElementType X, List L)：在线性表 L 中查找 X 的第一次出现位置;
-  4. void insert(ElementType X, int i, List L)：在位序 i 前插入一个新元素 X;
-  5. void Delete(int i, List L)：删除指定位序 i 的元素;
-  6. int Length(List L)：返回线性表 L 的长度素 n;
+  1. `List MarkEmpty()`：初始化一个空线性表 L;
+  2. `ElementType FindKth(int K, List L)`：根据位序 K，返回相应元素;
+  3. `int Find(ElementType X, List L)`：在线性表 L 中查找 X 的第一次出现位置;
+  4. `void insert(ElementType X, int i, List L)`：在位序 i 前插入一个新元素 X;
+  5. `void Delete(int i, List L)`：删除指定位序 i 的元素;
+  6. `int Length(List L)`：返回线性表 L 的长度素 n;
 
 **[线性表的顺序存储实现]**
 
@@ -709,7 +692,7 @@ $$
 
 注：数组：Data    最后一个元素位置：Last
 
-**「主要操作实现」**
+**[主要操作实现]**
 
 1. 初始化（建立空的顺序表）
 
@@ -779,13 +762,13 @@ $$
 
 #### 2.1.3、广义表
 
-**「例」二元多项式该如何表示？比如，给定二元多项式：**
+**[例]二元多项式该如何表示？比如，给定二元多项式：**
 
 $$
 P(x,y)=9x^{13}y^2+4x^{12}+15x^8y^3-x^8y+3x^2
 $$
 
-**「分析」** 可将上述二元多项式看成关于 x 的一元多项式：
+**[分析]** 可将上述二元多项式看成关于 x 的一元多项式：
 
 $$
 P(x,y)=(9y^2+4)x^{12}+(15y^3-y)x^8+3x^2
@@ -797,7 +780,7 @@ $$
 
 所以，上述二元多项式可以用**“复杂”链表**表示为：
 
-  ![image](/images/DataStructure/2.1.3_1.png)
+![image](/images/DataStructure/2.1.3_1.png)
 
 **广义表(Generalized List)**
 
@@ -828,14 +811,37 @@ struct GNode [
 
 3.  多重链表有广泛的用途：基本上如**数、图**这样相对复杂的数据结构都**可以采用多重链表**方式实现存储;
 
-**「例」矩阵可以用二维数组表示，但二维数组表示有两个缺陷：**
+**[例]矩阵可以用二维数组表示，但二维数组表示有两个缺陷：**
 
 1. 一是数组的**大小需要事先确定**;
 2. 对于“稀疏矩阵”，将造成大量的 **存储空间浪费**;
 
-![image](/images/DataStructure/2.1.3_3.png)
+$$
+A=
+\left[
+\begin{matrix}
+18 & 0 & 0 & 2 & 0 \\
+0 & 27 & 0 & 0 & 0 \\
+0 & 0 & 0 & -4 & 0 \\
+23 & -1 & 0 & 0 & 12 \\
+\end{matrix}
+\right]
+$$
 
-**「分析」采用一种典型的多重链表——十字链表来存储稀疏矩阵**
+$$
+B=
+\left[
+\begin{matrix}
+0 & 2 & 11 & 0 & 0 & 0 \\
+3 & -4 & -1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 9 & 13 & 0 \\
+0 & -2 & 0 & 0 & 10 & 7 \\
+6 & 0 & 0 & 5 & 0 & 0 \\
+\end{matrix}
+\right]
+$$
+
+**[分析]采用一种典型的多重链表——十字链表来存储稀疏矩阵**
 
 - **只存储矩阵非 0 元素项**
 
@@ -865,7 +871,8 @@ struct GNode [
 
 计算机如何进行表达式求值？
 
-「例」算数表达式 5+6/2-3×4，正确理解：
+[例]算数表达式 `5+6/2-3×4`，正确理解：
+
 $$
 5+6/2-3*4=5+3-3*4=8-3*4=8-12=-4
 $$
@@ -881,7 +888,7 @@ $$
 
 - 后缀表达式：运算符号位于两个运算数之后：`a b c * + d e / -`
 
-  **「例」6 2 / 3 - 4 2 * + = ?**
+  **[例]6 2 / 3 - 4 2 * + = ?**
 
   ```
   6 2 / 3 - 4 2 * +
@@ -907,11 +914,11 @@ $$
 
 **操作集：** 长度为 MaxSize 的堆栈 S 属于 Stark，堆栈元素 itrm 属于 ElementType
 
-1. Stack CreateStack (int MaxSize)：生成空堆栈，其最大长度为 MaxSize;
-2. int IsFull (Stack S, int MaxSize)：判断堆栈 S 是否已满;
-3. void Push (Stack S, ElementType item)：将元素 item 压入堆栈;
-4. int IsEmply (Stack S)：判断堆栈 S 是否为空;
-5. ElementType Pop (Stack S)：删除并返回栈顶元素;
+1. `Stack CreateStack (int MaxSize)`：生成空堆栈，其最大长度为 MaxSize;
+2. `int IsFull (Stack S, int MaxSize)`：判断堆栈 S 是否已满;
+3. `void Push (Stack S, ElementType item)`：将元素 item 压入堆栈;
+4. `int IsEmply (Stack S)`：判断堆栈 S 是否为空;
+5. `ElementType Pop (Stack S)`：删除并返回栈顶元素;
 
 ![image](/images/DataStructure/2.2.1_1.png)
 
@@ -963,7 +970,7 @@ ElementType Pop (Stack PtrtS) {
 }
 ```
 
-**「例」** 请用一个数组实现两个堆栈，要求最大地利用数组空间，使数组只要有空间入栈操作就可以成功。
+**[例]** 请用一个数组实现两个堆栈，要求最大地利用数组空间，使数组只要有空间入栈操作就可以成功。
 
 **[分析]** 一种比较聪明的方法是使这两个栈分别从数组的**两个开始向中间生长**; 当两个栈的**栈顶指针相遇**时，表示两个栈都满了。
 
@@ -1016,9 +1023,9 @@ ElementType Pop (struct DStack *PtrS, int Tag) {
 
 栈的链式存储结构实际上就是一个**单链表**，叫**链栈**。插入和删除操作只能在链栈的栈顶进行。
 
-**「问」** 栈顶指针 Top 应该在链表的那一头？
+**[问]** 栈顶指针 Top 应该在链表的那一头？
 
-**「答」** Top  一定是在链表的头上，如果放在尾上则不能实现删除的操作。
+**[答]** Top  一定是在链表的头上，如果放在尾上则不能实现删除的操作。
 
 ```c
 typedef struct SNode * Stack;
@@ -1080,18 +1087,18 @@ ElementTypre Pop(Stack S) {
 
 **基本策略：** 将中缀表达式转换为后缀表达式，然后求值
 
-**「问」** 如何将中缀表达式转换为后缀表达式？
+**[问]** 如何将中缀表达式转换为后缀表达式？
 
-**「例」** `2 + 9 / 3 - 5 = 2 9 3 / + 5 -`
+**[例]** `2 + 9 / 3 - 5 = 2 9 3 / + 5 -`
 
 1. 运算数相对顺序不变
 2. 运算符号顺序发生改变
    - 需要存储”等待中“的运算符号
    - 要将当前运算符号与”等待中“的子后一个运算符号比较
 
-**「问」** 有括号怎么办？
+**[问]** 有括号怎么办？
 
-**「例」** `a * (b + c) / d = a b c + * d /`
+**[例]** `a * (b + c) / d = a b c + * d /`
 
 1. 运算数相对顺序不变
 2. 运算符号顺序发生改变
@@ -1132,8 +1139,6 @@ ElementTypre Pop(Stack S) {
 
 **[实现代码]**
 
-[https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/Stack.cpp](https://github.com/ZhWing/zhwing.github.io/blob/master/Code/Data_Structure/Stack.cpp)
-
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
@@ -1167,8 +1172,7 @@ int main()
                 } else if (fl(str[i]) > fl(s.top())) {
                     s.push(str[i]);
                     break;
-                } 
-                else {
+                } else {
                     // while (fl(str[i]) <= fl(s.top())) {
                     //     cout << s.top() << ' ';
                     //     s.pop();
@@ -1178,7 +1182,6 @@ int main()
                     // s.push(str[i]);
                 }
             }
-
         } else if (str[i] == '(') {
             s.push(str[i]);
         } else if (str[i] == ')') {
@@ -1197,8 +1200,6 @@ int main()
     return 0;
 }
 ```
-
-
 
 **[堆栈的其他应用]**
 
@@ -1226,11 +1227,11 @@ int main()
 
 操作集：长度 MaxSize 的队列 Q 属于 Queue，队列元素 item 属于 ElementType
 
-1. Queue CreatQueue(int MaxSize)：生成长度为 MaxSize 的空队列;
-2. int IsFullQ(Queue Q, int MaxSize)：判断队列 Q 是否已满;
-3. void AddQ(Queue Q, ElementType item)：将数据元素 item 插入队列 Q 中;
-4. int IsEmptyQ(Queue Q)：判断队列 Q 是否为空;
-5. ElementType DeleteQ(Queue Q)：将队头元素从队列中删除并返回;
+1. `Queue CreatQueue(int MaxSize)`：生成长度为 MaxSize 的空队列;
+2. `int IsFullQ(Queue Q, int MaxSize)`：判断队列 Q 是否已满;
+3. `void AddQ(Queue Q, ElementType item)`：将数据元素 item 插入队列 Q 中;
+4. `int IsEmptyQ(Queue Q)`：判断队列 Q 是否为空;
+5. `ElementType DeleteQ(Queue Q)`：将队头元素从队列中删除并返回;
 
 **[队列的顺序存储实现]**( 循环队列)
 
@@ -1337,7 +1338,7 @@ ElementType DeleteQ(Queue PtrQ) {
 
 主要思路：相同指数的项系数相加，其余部分进行拷贝。
 
-**「实现」**
+**[实现]**
 
 采用不带头结点的单向链表，按照指数递减的顺序排列各项。
 
@@ -1481,18 +1482,18 @@ Polynomial PolyAdd(Polynomial P1, Polynomial P2) {
 
   若不为空，则由根结点和其左、右二叉子树组成
 
-- **操作集**：BT ∈ BinTree, Item ∈ ElementType，重要操作有：
+- **操作集**：`BT ∈ BinTree, Item ∈ ElementType`，重要操作有：
 
-  1. Boolean IsEmpty(BinTree BT)：判别 BT 是否为空
-  2. void Traversal(BinTree BT)：遍历，按某顺序访问每个结点
-  3. BinTree CreatBinTree()：创建一个二叉树
+  1. `Boolean IsEmpty(BinTree BT)`：判别 BT 是否为空
+  2. `void Traversal(BinTree BT)`：遍历，按某顺序访问每个结点
+  3. `BinTree CreatBinTree()`：创建一个二叉树
 
 - **常用的遍历方法**：
 
-  - void PreOrderTraversal(BinTree BT)：先序 --> 根、左子树、右子树
-  - void InOrderTraversal(BinTree BT)：中序 --> 左子树、根、右子树
-  - void PostOrderTraversal(BinTree BT)：后序 --> 左子树、右子树、根
-  - void LevelOrderTraversal(BinTree BT)：层次遍历，从上到下、从左到右
+  - `void PreOrderTraversal(BinTree BT)`：先序 --> 根、左子树、右子树
+  - `void InOrderTraversal(BinTree BT)`：中序 --> 左子树、根、右子树
+  - `void PostOrderTraversal(BinTree BT)`：后序 --> 左子树、右子树、根
+  - `void LevelOrderTraversal(BinTree BT)`：层次遍历，从上到下、从左到右
 
 #### 3.6、二叉树的存储结构
 
@@ -2019,7 +2020,7 @@ BinTree Delete (ElementType X, BinTree BST) {
      }
      ```
 
-     ```C++
+     ```c++
      Tree NewNode(int V) {
          Tree T = (Tree)malloc(sizeof(struct TreeNode));
          T->v = V;
