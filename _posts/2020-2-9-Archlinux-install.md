@@ -20,7 +20,7 @@ tags:
 ls /sys/firmware/efi/efivars
 ```
 
-### 1.2、调整一下难受的字体
+### 1.2、调大字体
 
 ```shell
 setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
@@ -28,13 +28,25 @@ setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz
 
 ### 1.3、联网、配置一下软件源，将 China 源放在前面，同步软件源
 
-```shell
-# 联网
-wifi-menu
-dhcpcd
+~~~shell
+rfkill unblock wifi # 取消禁用 wifi 设备
+ip link set wlan0 up # 开启 wlan0
+~~~
 
-#  配置软件源
-vim /etc/pacman.d/mirrorlist
+输入 `iwctl` 进入交互
+
+~~~shell
+station wlan0 scan
+station wlan0 get_networks
+station wlan0 connect <network_name>
+station wlan0 show
+exit
+~~~
+
+配置软件源
+
+```shell
+vim /etc/pacman.d/mirrorlist # 把 China 源放前面
 pacman -Syy
 ```
 
@@ -47,34 +59,24 @@ timedatectl set-ntp true
 ### 1.5、创建系统分区
 
 ```shell
-# 查看电脑硬盘分区
-fdisk - l
-
-# 自己滚局需要进行分区
-cfdisk
-
-#　举个栗子
-/dev/sda1   # EFI
-/dev/sda2   # Swap
-/dev/sda2   # Linux
+fdisk - l # 查看电脑硬盘分区
+cfdisk # 分区
 ```
 
 ### 1.6、格式化分区
 
 ```shell
-mkfs.vfat /dev/sda1
-mkswap /dev/sda2
-mkfs.ext4 /dev/sda3
+mkfs.vfat /dev/sda1 # efi 分区
+mkswap /dev/sda2 # 交换分区
+mkfs.ext4 /dev/sda3 # /
 ```
 
 ### 1.7、挂载分区
 
 ```shell
-# 挂载 Swap 分区
-swapon /dev/sda2
+swapon /dev/sda2 # 挂载 Swap 分区
 
-# 挂载 / 和 EFI分区
-mount /dev/sda3 /mnt
+mount /dev/sda3 /mnt # 挂载 / 和 EFI分区
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
@@ -82,7 +84,7 @@ mount /dev/sda1 /mnt/boot
 ### 1.8、安装系统以及一些软件
 
 ```shell
-pacstrap /mnt base base-devel linux linux-firmware dhcpcd dhclient netctl iw wpa_supplicant nano vim efibootmgr grub dialog
+pacstrap /mnt base base-devel linux linux-firmware nano vim vi
 ```
 
 ### 1.9、生成 fatab，检查是否挂载成功
@@ -155,20 +157,23 @@ passwd zhw
 
 ## 3、Archlinux 图形化界面安装(kde)
 
-### 3.1、xorg、kde
+### 3.1、xorg、kde、gnome
 
 ```shell
-pacman -S xorg xorg-xinit
-pacman -S plasma kde-applications
+pacman -S xorg xorg-xinit xorg-apps
+
+pacman -S plasma kde-applications # ked 环境
 pacman -S sddm sddm-kcm
 systemctl enable sddm
+
+pacman -S gnome gnome-extra # gnome 环境
 ```
 
 ### 3.2、驱动安装
 
 ```shell
 # 显卡驱动(AMD 自行解决)
-pacman -S nvidia nvidia-settings
+pacman -S nvidia nvidia-settings xf86-video-intel
 
 #　触控板驱动
 pacman -S xf86-input-synaptics
@@ -185,28 +190,28 @@ amixer sset Master unmute
 ### 3.3、中文字体
 
 ```shell
-pacman -S ttf-dejavu wqy-microhei wqy-microhei-lite wqy-bitmapfont wqy-zenhei ttf-arphic-ukai ttf-arphic-uming adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts noto-fonts-cjk
+pacman -S noto-fonts-cjk
 ```
 
 ### 3.4、网络
 
 ```shell
-pacman -S networkmanager net-tools
+pacman -S networkmanager nm-connection-editor network-manager-applet rp-pppoe net-tools
+
 systemctl enable NetworkManager
-systemctl enable dhcpcd
 ```
 
 ### 3.6、一些其他软件
 
 ```shell
-openssh firefox intel-ucode zsh
+openssh firefox intel-ucode zsh git
 ```
 
 ### 3.7、安装Grub
 
 ```shell
 # 安装 os-prober 和 ntfs-3g 识别多系统
-pacman -S os-prober ntfs-3g
+pacman -S os-prober ntfs-3g efibootmgr grub
 
 # 安装 grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Archlinux
@@ -215,14 +220,33 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Archlinux
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## 4、重启，安装完成!
+## 4、dwm
 
-我的 Archlinux 桌面配置：
+### 1、安装
 
-![shell](/images/Archlinux/shell.png)
+~~~shell
+git clone https://github.com/lazywa/dwm.git
+mv dwm .dwm
+cd .dwm
+sudo make clean install
+~~~
 
-![desktop](/images/Archlinux/Archlinux-desktop.png)
-![theme](/images/Archlinux/theme.png)
+~~~shell
+git clone https://github.com/lazywa/st.git
+mv st .st
+cd .st
+sudo make clean install
+~~~
 
-![windows](/images/Archlinux/windows.png)
-![icons](/images/Archlinux/icons.png)
+~~~shell
+git clone https://git.suckless.org/dmenu
+cd dmenu
+sudo make clean install
+~~~
+
+### 2、需要安装的程序
+
+~~~shell
+sudo pacman -S feh acpitool bc alsa-utils trayer xcompmgr SauceCodePro-Nerd-Font-Mono screenkey
+~~~
+
