@@ -254,3 +254,21 @@ sudo make clean install
 ```shell
 sudo pacman -S feh acpitool bc alsa-utils trayer xcompmgr nerd-fonts-source-code-pro screenkey
 ```
+
+## 5、Aur 源
+
+### 1、下载安装 yay
+
+```shell
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+
+### 2、补全 yay 依赖
+
+```shell
+sudo pacman -S archlinux-keyring      # 钥匙环是必需的，不然会有包认证失败
+yay                                   # 自动从 pacman 中补全依赖
+```
