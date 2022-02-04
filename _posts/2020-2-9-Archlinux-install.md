@@ -207,6 +207,11 @@ pacman -S fcitx fcitx-configtool fcitx-sunpinyin
 openssh firefox intel-ucode zsh git
 ```
 
+在虚拟机中使用 open-vm-tools 的必要软件
+```shell
+mesa lsb-release xf86-input-vmmouse xf86-video-vmware
+```
+
 ### 7、安装Grub
 
 ```shell
