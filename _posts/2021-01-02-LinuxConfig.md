@@ -25,6 +25,7 @@ tags:
 - **网易云音乐**
 - **Qv2ray**
 - **proxychains**
+- **Tray-Icons-Reloaded**
 
 ## 配置终端
 
